@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Route, NavLink, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { getRandomActivity } from '../apiCalls.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
+import SavedActivities from '../SavedActivities/SavedActivities.js';
 import './App.scss';
 
 function App() {
@@ -16,26 +17,20 @@ function App() {
     type: ''
   })
 
-  // const [savedActivities, setSavedActivities] = useState([])
-
   const generateNewActivity = () => {
     getRandomActivity()
     .then(data => setRandomActivity(data))
   }
 
-  // const saveActivity = (currentActivity) => {
-  //   setSavedActivities([...savedActivities, currentActivity])
-  // }
-
   return(
     <section>
       <nav>
-        <NavLink to='/'>
+        <Link to='/'>
           Home
-        </NavLink>
-        <NavLink to='/saved-activities'>
+        </Link>
+        <Link to='/saved-activities'>
           Saved Activities
-        </NavLink>
+        </Link>
       </nav>
       <Route 
         exact path='/'>
@@ -49,8 +44,11 @@ function App() {
           <RandomActivity 
             randomActivity={randomActivity}
             generateNewActivity={generateNewActivity}
-            // saveActivity={saveActivity}
           />
+      </Route>
+      <Route  
+        exact path='/saved-activities'>
+          <SavedActivities />
       </Route>
     </section>
   )
