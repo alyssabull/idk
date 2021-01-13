@@ -16,16 +16,16 @@ function App() {
     type: ''
   })
 
-  const [savedActivities, setSavedActivities] = useState([])
+  // const [savedActivities, setSavedActivities] = useState([])
 
   const generateNewActivity = () => {
     getRandomActivity()
     .then(data => setRandomActivity(data))
   }
 
-  const saveActivity = (currentActivity) => {
-    setSavedActivities([...savedActivities, currentActivity])
-  }
+  // const saveActivity = (currentActivity) => {
+  //   setSavedActivities([...savedActivities, currentActivity])
+  // }
 
   return(
     <section>
@@ -49,7 +49,7 @@ function App() {
           <RandomActivity 
             randomActivity={randomActivity}
             generateNewActivity={generateNewActivity}
-            saveActivity={saveActivity}
+            // saveActivity={saveActivity}
           />
       </Route>
     </section>
