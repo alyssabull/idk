@@ -42,6 +42,7 @@ function App() {
         exact path='/random-activity'>
           <RandomActivity 
             randomActivity={randomActivity}
+            generateNewActivity={generateNewActivity}
           />
       </Route>
     </section>

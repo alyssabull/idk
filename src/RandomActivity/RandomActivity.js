@@ -1,9 +1,14 @@
+import { useState, useEffect } from 'react'
 import './RandomActivity.scss'
 
 const RandomActivity = (props) => {
 
   return(
-    <h1>{props.randomActivity.activity}</h1>
+    <section>
+      <h1>{props.randomActivity.activity}</h1>
+      <button>+ Save Activity</button>
+      <button onClick={props.generateNewActivity}>Show New Activity</button>
+    </section>
   )
 }
 
