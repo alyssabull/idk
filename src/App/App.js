@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import { getRandomActivity } from '../apiCalls.js';
-import './App.css';
+import RandomActivity from '../RandomActivity/RandomActivity.js';
+import './App.scss';
 
 function App() {
 
@@ -33,13 +34,15 @@ function App() {
       <Route 
         exact path='/'>
       <h1>IDK</h1>
-      <Link to='/random-activity'>
+      <Link to='random-activity'>
         <button onClick={generateNewActivity}>PRESS FOR FUN</button>
       </Link>
       </Route>
       <Route 
         exact path='/random-activity'>
-          <h1>RANDOM ACTIVITY</h1>
+          <RandomActivity 
+            randomActivity={randomActivity}
+          />
       </Route>
     </section>
   )
