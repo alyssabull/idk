@@ -1,8 +1,12 @@
+import ActivityCard from '../ActivityCard/ActivityCard.js';
 import './SavedActivities.scss'
 
 const SavedActivities = () => {
   return(
-    <h1>Saved Activities</h1>
+    <section>
+      <h1>Saved Activities</h1>
+      <ActivityCard />
+    </section>
   )
 }
 
