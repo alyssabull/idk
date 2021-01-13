@@ -6,7 +6,9 @@ const RandomActivity = (props) => {
   const [savedStatus, setSavedStatus] = useState('+ Save Activity')
 
   const saveActivity = (currentActivity) => {
-    setSavedActivities([...savedActivities, currentActivity])
+    if (savedStatus === '+ Save Activity') {
+      setSavedActivities([...savedActivities, currentActivity])
+    }
   }
 
   useEffect(() => {
