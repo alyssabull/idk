@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { getRandomActivity } from '../apiCalls.js';
+import { getFilteredActivity, getRandomActivity } from '../apiCalls.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
 import Dropdown from '../Dropdown/Dropdown.js';
@@ -21,9 +21,15 @@ function App() {
   }, [])
 
   const generateNewActivity = () => {
-    getRandomActivity()
-    .then(data => formatAPIData(data))
-    .catch(error => console.error)
+    if (activitySearchType === 'any') {
+      getRandomActivity()
+      .then(data => formatAPIData(data))
+      .catch(error => console.error)
+    } else {
+      getFilteredActivity(activitySearchType)
+      .then(data => formatAPIData(data))
+      .catch(error => console.error)
+    }
   }
 
   const formatAPIData = (data) => {
