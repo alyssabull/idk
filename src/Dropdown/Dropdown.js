@@ -1,11 +1,15 @@
+import { useEffect, useState } from 'react'
 import './Dropdown.scss'
 
 const Dropdown = (props) => {
+
+  const [dropdownValue, setDropdownValue] = useState(props.filterType)
+
   const generateDropdown = () => {
     return props.dropdownValues.map(value => {
       return(
         <option
-          id={value.id}
+          id={value.type}
           key={value.id}
           value={`${value.name}`}>
             {value.name}
@@ -14,16 +18,26 @@ const Dropdown = (props) => {
     })
   }
 
-  const handleDropdownChange = (event) => {
-    props.filterSearchResults(event.target.value.toLowerCase())
-  }
+  useEffect(() => {
+    props.filterSearchResults(dropdownValue, props.dropdownType)
+  }, [dropdownValue])
+
+  // const handleDropdownChange = (event) => {
+  //   debugger
+  //   setDropdownValue(event.target.value.toLowerCase())
+  //   console.log(dropdownValue)
+  //   props.filterSearchResults(dropdownValue, event.target[0].id)
+  // }
 
   return(
-    <select 
-    id='dropdown'
-    onChange={(event) => handleDropdownChange(event)}>
-      {generateDropdown()}
-    </select>
+    <form>
+      <select 
+      id='dropdown'
+      // value={dropdownValue}
+      onChange={(event) => setDropdownValue(event.target.value.toLowerCase())}>
+        {generateDropdown()}
+      </select>
+    </form>
   )
 }
 

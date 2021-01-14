@@ -22,7 +22,6 @@ function App() {
   }, [])
 
   const generateNewActivity = () => {
-    debugger
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
       getRandomActivity()
       .then(data => formatAPIData(data))
@@ -34,6 +33,20 @@ function App() {
     } else if (activitySearchType === 'any' && participantSearchNum !== 'any') {
       getFilteredParticipantActivity(Number(participantSearchNum))
       .then(data => formatAPIData(data))
+      .catch(error => console.error)
+    } else if (activitySearchType !== 'any' && participantSearchNum !== 'any') {
+      getFilteredActivity(activitySearchType)
+      .then(data => filterActivityParticipants(data))
+      .catch(error => console.error)
+    }
+  }
+
+  const filterActivityParticipants = (data) => {
+    if (data.participants === parseInt(participantSearchNum)) {
+      formatAPIData(data)
+    } else {
+      getFilteredActivity(activitySearchType)
+      .then(data => filterActivityParticipants(data))
       .catch(error => console.error)
     }
   }
@@ -65,8 +78,8 @@ function App() {
     localStorage.setItem('storedActivities', stringifiedActivities)
   }
 
-  const filterSearchResults = (dropdownInput) => {
-    if (dropdownInput.length > 1) {
+  const filterSearchResults = (dropdownInput, dropdownType) => {
+    if (dropdownType === 'activity') {
       setActivitySearchType(dropdownInput)
     } else {
       setParticipantSearchNum(dropdownInput)
@@ -94,31 +107,35 @@ function App() {
           <p>Show me</p>
           <Dropdown 
             dropdownValues={[
-              {id: 0, name: 'Any'},
-              {id: 1, name: 'Busywork'},
-              {id: 2, name: 'Charity'},
-              {id: 3, name: 'Cooking'},
-              {id: 4, name: 'DIY'},
-              {id: 5, name: 'Education'},
-              {id: 6, name: 'Music'},
-              {id: 7, name: 'Recreational'},
-              {id: 8, name: 'Relaxation'},
-              {id: 9, name: 'Social'}
+              {id: 0, name: 'Any', type: 'activity'},
+              {id: 1, name: 'Busywork', type: 'activity'},
+              {id: 2, name: 'Charity', type: 'activity'},
+              {id: 3, name: 'Cooking', type: 'activity'},
+              {id: 4, name: 'DIY', type: 'activity'},
+              {id: 5, name: 'Education', type: 'activity'},
+              {id: 6, name: 'Music', type: 'activity'},
+              {id: 7, name: 'Recreational', type: 'activity'},
+              {id: 8, name: 'Relaxation', type: 'activity'},
+              {id: 9, name: 'Social', type: 'activity'}
             ]}
             filterSearchResults={filterSearchResults}
+            filterType={activitySearchType}
+            dropdownType='activity'
           />
-          <p>Activities with</p>
+          <p>Activity with</p>
           <Dropdown 
             dropdownValues={[
-              {id: 0, name: 'Any'},
-              {id: 1, name: '0'},
-              {id: 2, name: '1'},
-              {id: 3, name: '2'},
-              {id: 4, name: '3'},
-              {id: 5, name: '4'},
+              {id: 0, name: 'Any', type: 'participants'},
+              {id: 1, name: '1', type: 'participants'},
+              {id: 2, name: '2', type: 'participants'},
+              {id: 3, name: '3', type: 'participants'},
+              {id: 4, name: '4+', type: 'participants'},
             ]}
             filterSearchResults={filterSearchResults}
+            filterType={participantSearchNum}
+            dropdownType='participants'
           />
+          <p>Participants</p>
           <button onClick={clearFilters}>CLEAR FILTERS</button>
         </section>
       </Route>
