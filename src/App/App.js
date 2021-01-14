@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
@@ -73,6 +73,11 @@ function App() {
     }
   }
 
+  const clearFilters = () => {
+    setActivitySearchType('any')
+    setParticipantSearchNum('any')
+  }
+
   return(
     <section>
       <nav>
@@ -114,6 +119,7 @@ function App() {
             ]}
             filterSearchResults={filterSearchResults}
           />
+          <button onClick={clearFilters}>CLEAR FILTERS</button>
         </section>
       </Route>
       <Route 
