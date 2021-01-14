@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import { getRandomActivity } from '../apiCalls.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
+import Dropdown from '../Dropdown/Dropdown.js';
 import './App.scss';
 
 function App() {
@@ -65,7 +66,22 @@ function App() {
         exact path='/'>
       <h1>IDK</h1>
       <section className='filter-activities'>
-        
+        <p>Show me</p>
+        <Dropdown 
+          activityTypes={[
+            {id: 0, name: 'Any'},
+            {id: 1, name: 'Busywork'},
+            {id: 1, name: 'Charity'},
+            {id: 1, name: 'Cooking'},
+            {id: 1, name: 'DIY'},
+            {id: 1, name: 'Education'},
+            {id: 1, name: 'Music'},
+            {id: 1, name: 'Recreational'},
+            {id: 1, name: 'Relaxation'},
+            {id: 1, name: 'Social'}
+          ]}
+        />
+        <p>Activities</p>
       </section>
       <Link to='random-activity'>
         <button onClick={generateNewActivity}>Find an Activity</button>
