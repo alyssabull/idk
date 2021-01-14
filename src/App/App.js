@@ -10,6 +10,7 @@ function App() {
 
   const [randomActivity, setRandomActivity] = useState({})
   const [savedActivities, setSavedActivities] = useState([])
+  const [activitySearchType, setActivitySearchType] = useState('any')
 
   useEffect(() => {
     if(localStorage.length > 0) {
@@ -52,6 +53,10 @@ function App() {
     localStorage.setItem('storedActivities', stringifiedActivities)
   }
 
+  const filterSearchResults = (dropdownInput) => {
+    setActivitySearchType(dropdownInput)
+  }
+
   return(
     <section>
       <nav>
@@ -80,6 +85,7 @@ function App() {
             {id: 1, name: 'Relaxation'},
             {id: 1, name: 'Social'}
           ]}
+          filterSearchResults={filterSearchResults}
         />
         <p>Activities</p>
       </section>

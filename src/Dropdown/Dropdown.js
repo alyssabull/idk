@@ -14,8 +14,14 @@ const Dropdown = (props) => {
     })
   }
 
+  const handleDropdownChange = (event) => {
+    props.filterSearchResults(event.target.value.toLowerCase())
+  }
+
   return(
-    <select id='dropdown'>
+    <select 
+    id='dropdown'
+    onChange={(event) => handleDropdownChange(event)}>
       {generateDropdown()}
     </select>
   )
