@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { getFilteredActivity, getRandomActivity } from '../apiCalls.js';
+import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
 import Dropdown from '../Dropdown/Dropdown.js';
@@ -11,6 +11,7 @@ function App() {
   const [randomActivity, setRandomActivity] = useState({})
   const [savedActivities, setSavedActivities] = useState([])
   const [activitySearchType, setActivitySearchType] = useState('any')
+  const [participantSearchNum, setParticipantSearchNum] = useState('any')
 
   useEffect(() => {
     if(localStorage.length > 0) {
@@ -21,12 +22,17 @@ function App() {
   }, [])
 
   const generateNewActivity = () => {
-    if (activitySearchType === 'any') {
+    debugger
+    if (activitySearchType === 'any' && participantSearchNum === 'any') {
       getRandomActivity()
       .then(data => formatAPIData(data))
       .catch(error => console.error)
-    } else {
+    } else if (activitySearchType !== 'any' && participantSearchNum === 'any') {
       getFilteredActivity(activitySearchType)
+      .then(data => formatAPIData(data))
+      .catch(error => console.error)
+    } else if (activitySearchType === 'any' && participantSearchNum !== 'any') {
+      getFilteredParticipantActivity(Number(participantSearchNum))
       .then(data => formatAPIData(data))
       .catch(error => console.error)
     }
@@ -60,7 +66,11 @@ function App() {
   }
 
   const filterSearchResults = (dropdownInput) => {
-    setActivitySearchType(dropdownInput)
+    if (dropdownInput.length > 1) {
+      setActivitySearchType(dropdownInput)
+    } else {
+      setParticipantSearchNum(dropdownInput)
+    }
   }
 
   return(
@@ -74,25 +84,38 @@ function App() {
         </Link>
       </nav>
       <h1>IDK</h1>
-      <section className='filter-activities'>
-        <p>Show me</p>
-        <Dropdown 
-          activityTypes={[
-            {id: 0, name: 'Any'},
-            {id: 1, name: 'Busywork'},
-            {id: 1, name: 'Charity'},
-            {id: 1, name: 'Cooking'},
-            {id: 1, name: 'DIY'},
-            {id: 1, name: 'Education'},
-            {id: 1, name: 'Music'},
-            {id: 1, name: 'Recreational'},
-            {id: 1, name: 'Relaxation'},
-            {id: 1, name: 'Social'}
-          ]}
-          filterSearchResults={filterSearchResults}
-        />
-        <p>Activities</p>
-      </section>
+      <Route path={["/", "/random-activity"]}>
+        <section className='filter-activities'>
+          <p>Show me</p>
+          <Dropdown 
+            dropdownValues={[
+              {id: 0, name: 'Any'},
+              {id: 1, name: 'Busywork'},
+              {id: 2, name: 'Charity'},
+              {id: 3, name: 'Cooking'},
+              {id: 4, name: 'DIY'},
+              {id: 5, name: 'Education'},
+              {id: 6, name: 'Music'},
+              {id: 7, name: 'Recreational'},
+              {id: 8, name: 'Relaxation'},
+              {id: 9, name: 'Social'}
+            ]}
+            filterSearchResults={filterSearchResults}
+          />
+          <p>Activities with</p>
+          <Dropdown 
+            dropdownValues={[
+              {id: 0, name: 'Any'},
+              {id: 1, name: '0'},
+              {id: 2, name: '1'},
+              {id: 3, name: '2'},
+              {id: 4, name: '3'},
+              {id: 5, name: '4'},
+            ]}
+            filterSearchResults={filterSearchResults}
+          />
+        </section>
+      </Route>
       <Route 
         exact path='/'>
       <Link to='random-activity'>

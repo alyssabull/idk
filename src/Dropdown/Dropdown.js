@@ -2,13 +2,13 @@ import './Dropdown.scss'
 
 const Dropdown = (props) => {
   const generateDropdown = () => {
-    return props.activityTypes.map(activityType => {
+    return props.dropdownValues.map(value => {
       return(
         <option
-          id={activityType.id}
-          key={activityType.id}
-          value={`${activityType.name}`}>
-            {activityType.name}
+          id={value.id}
+          key={value.id}
+          value={`${value.name}`}>
+            {value.name}
         </option>
       )
     })
