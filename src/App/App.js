@@ -73,8 +73,6 @@ function App() {
           Saved Activities
         </Link>
       </nav>
-      <Route 
-        exact path='/'>
       <h1>IDK</h1>
       <section className='filter-activities'>
         <p>Show me</p>
@@ -95,6 +93,8 @@ function App() {
         />
         <p>Activities</p>
       </section>
+      <Route 
+        exact path='/'>
       <Link to='random-activity'>
         <button onClick={generateNewActivity}>Find an Activity</button>
       </Link>
