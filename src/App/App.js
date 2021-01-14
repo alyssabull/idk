@@ -14,12 +14,25 @@ function App() {
     link: '',
     participants: null,
     price: null,
-    type: ''
+    type: '',
+    isSaved: false
   })
 
   const generateNewActivity = () => {
     getRandomActivity()
-    .then(data => setRandomActivity(data))
+    .then(data => formatAPIData(data))
+  }
+
+  const formatAPIData = (data) => {
+    const cleanedData = {
+      activity: data.activity,
+      key: data.key,
+      link: data.link,
+      participants: data.participants,
+      type: data.type,
+      isSaved: false
+    }
+    setRandomActivity(cleanedData)
   }
 
   return(
