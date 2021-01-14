@@ -37,8 +37,12 @@ function App() {
     setRandomActivity(cleanedData)
   }
 
-  const updateSavedActivities = (activities) => {
-    setSavedActivities(activities)
+  const updateSavedActivities = (activities, updateType) => {
+    if(updateType === 'save') {
+      setSavedActivities([...savedActivities, activities])
+    } else {
+      setSavedActivities(activities)
+    }
   }
 
   return(
@@ -63,14 +67,15 @@ function App() {
           <RandomActivity 
             randomActivity={randomActivity}
             generateNewActivity={generateNewActivity}
-            setSavedActivities={setSavedActivities}
             savedActivities={savedActivities}
             updateSavedActivities={updateSavedActivities}
           />
       </Route>
       <Route  
         exact path='/saved-activities'>
-          <SavedActivities />
+          <SavedActivities 
+            savedActivities={savedActivities}
+          />
       </Route>
     </section>
   )

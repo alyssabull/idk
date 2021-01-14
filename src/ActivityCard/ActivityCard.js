@@ -1,9 +1,10 @@
 import './ActivityCard.scss'
 
-const ActivityCard = () => {
+const ActivityCard = (props) => {
   return(
     <section>
-      <h1>Activity Card</h1>
+      <h1>{props.activity}</h1>
+      <p>{props.participants}</p>
     </section>
   )
 }
