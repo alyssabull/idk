@@ -5,8 +5,7 @@ const RandomActivity = (props) => {
     if (activity.isSaved === false) {
       activity.isSaved = true
       props.updateSavedActivities(activity, 'save')
-    } 
-    else if (activity.isSaved === true) {
+    } else if (activity.isSaved === true) {
       activity.isSaved = false
       const filteredActivities = props.savedActivities.filter(savedActivity => {
         return savedActivity.key !== activity.key

@@ -16,7 +16,7 @@ function App() {
       let parsedActivities = JSON.parse(storedActivities)
       setSavedActivities(parsedActivities)
     }
-  })
+  }, [])
 
   const generateNewActivity = () => {
     getRandomActivity()
@@ -81,6 +81,7 @@ function App() {
         exact path='/saved-activities'>
           <SavedActivities 
             savedActivities={savedActivities}
+            updateSavedActivities={updateSavedActivities}
           />
       </Route>
     </section>
