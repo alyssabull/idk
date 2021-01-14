@@ -14,12 +14,22 @@ const RandomActivity = (props) => {
     }
   }
 
+  const generateActivityCard = () => {
+      return(
+        <section>
+          <h1>{props.randomActivity.activity}</h1>
+          <p>{props.randomActivity.type}</p>
+          <p>{props.randomActivity.participants}</p>
+          <button onClick={() => toggleActivity(props.randomActivity)}>{props.randomActivity.isSaved ? 'Remove Activity' : '+ Save Activity'}</button>
+          <button onClick={props.generateNewActivity}>Show New Activity</button>
+          {props.randomActivity.link !== '' && <button>Get Started Here!</button>}
+        </section>
+      )
+  }
+
   return(
     <section>
-      <h1>{props.randomActivity.activity}</h1>
-      <button onClick={() => toggleActivity(props.randomActivity)}>{props.randomActivity.isSaved ? 'Remove Activity' : '+ Save Activity'}</button>
-      <button onClick={props.generateNewActivity}>Show New Activity</button>
-      {props.randomActivity.link !== '' && <button>Get Started Here!</button>}
+      {generateActivityCard()}
     </section>
   )
 }
