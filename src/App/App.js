@@ -91,10 +91,10 @@ function App() {
     <section>
       <nav>
         <Link to='/'>
-          Home
+          <p className='nav-title'>Home</p>
         </Link>
         <Link to='/saved-activities'>
-          Saved Activities
+        <p className='nav-title'>Saved Activities</p>
         </Link>
       </nav>
       <h1>IDK</h1>
