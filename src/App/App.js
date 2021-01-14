@@ -64,8 +64,11 @@ function App() {
       <Route 
         exact path='/'>
       <h1>IDK</h1>
+      <section className='filter-activities'>
+        
+      </section>
       <Link to='random-activity'>
-        <button onClick={generateNewActivity}>PRESS FOR FUN</button>
+        <button onClick={generateNewActivity}>Find an Activity</button>
       </Link>
       </Route>
       <Route 
