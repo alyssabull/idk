@@ -17,6 +17,8 @@ function App() {
     type: '',
     isSaved: false
   })
+  const [savedActivities, setSavedActivities] = useState([])
+
 
   const generateNewActivity = () => {
     getRandomActivity()
@@ -33,6 +35,10 @@ function App() {
       isSaved: false
     }
     setRandomActivity(cleanedData)
+  }
+
+  const updateSavedActivities = (activities) => {
+    setSavedActivities(activities)
   }
 
   return(
@@ -57,6 +63,9 @@ function App() {
           <RandomActivity 
             randomActivity={randomActivity}
             generateNewActivity={generateNewActivity}
+            setSavedActivities={setSavedActivities}
+            savedActivities={savedActivities}
+            updateSavedActivities={updateSavedActivities}
           />
       </Route>
       <Route  

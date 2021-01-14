@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './RandomActivity.scss'
 
 const RandomActivity = (props) => {
-  const [savedActivities, setSavedActivities] = useState([])
+  // const [savedActivities, setSavedActivities] = useState([])
   // TODO: remove savedStatus, add prop isSaved to random activity
   // add cleaner function to add isSaved prop (in APP)
 
@@ -23,17 +23,19 @@ const RandomActivity = (props) => {
   //   setSavedStatus('+ Save Activity')
   // }, [props])
 
-  // const toggleActivity = (currentActivity) => {
-  //   if (savedStatus === '+ Save Activity') {
-  //     setSavedActivities([...savedActivities, currentActivity])
-  //   } else if (savedStatus === 'Remove Activity') {
-  //     const filteredActivities = savedActivities.filter(activity => {
-  //       return activity.key !== currentActivity.key
-  //     })
-  //     setSavedActivities(filteredActivities)
-  //   }
-  // }
-  // pass setRandomActivity as prop to update isSaved 
+  const toggleActivity = (activity) => {
+    if (activity.isSaved === false) {
+      activity.isSaved = true
+      props.updateSavedActivities([activity])
+    } 
+    else if (activity.isSaved === true) {
+      activity.isSaved = false
+      const filteredActivities = props.savedActivities.filter(savedActivity => {
+        return savedActivity.key !== activity.key
+      })
+      props.updateSavedActivities(filteredActivities)
+    }
+  }
 
   return(
     <section>
