@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
-import Dropdown from '../Dropdown/Dropdown.js';
+import DropdownFilter from '../Dropdown/Dropdown.js';
 import './App.scss';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
   }, [])
 
   const generateNewActivity = () => {
+    debugger
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
       getRandomActivity()
       .then(data => formatAPIData(data))
@@ -86,11 +87,6 @@ function App() {
     }
   }
 
-  const clearFilters = () => {
-    setActivitySearchType('any')
-    setParticipantSearchNum('any')
-  }
-
   return(
     <section>
       <nav>
@@ -105,7 +101,7 @@ function App() {
       <Route path={["/", "/random-activity"]}>
         <section className='filter-activities'>
           <p>Show me</p>
-          <Dropdown 
+          <DropdownFilter 
             dropdownValues={[
               {id: 0, name: 'Any', type: 'activity'},
               {id: 1, name: 'Busywork', type: 'activity'},
@@ -123,7 +119,7 @@ function App() {
             dropdownType='activity'
           />
           <p>Activity with</p>
-          <Dropdown 
+          <DropdownFilter 
             dropdownValues={[
               {id: 0, name: 'Any', type: 'participants'},
               {id: 1, name: '1', type: 'participants'},
@@ -136,7 +132,6 @@ function App() {
             dropdownType='participants'
           />
           <p>Participants</p>
-          <button onClick={clearFilters}>CLEAR FILTERS</button>
         </section>
       </Route>
       <Route 
