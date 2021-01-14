@@ -3,11 +3,13 @@ import './SavedActivities.scss'
 
 const SavedActivities = (props) => {
   const generateActivityCards = () => {
-    props.savedActivities.map(activity => {
+    return props.savedActivities.map(activity => {
       return(
         <ActivityCard 
-          activity={activity.name}
+          activity={activity.activity}
           type={activity.type}
+          participants={activity.participants}
+          key={activity.key}
         />
       )
     })

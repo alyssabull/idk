@@ -4,7 +4,7 @@ const ActivityCard = (props) => {
   return(
     <section>
       <h1>{props.activity}</h1>
-      <p>{props.participants}</p>
+      <p>{props.type}</p>
     </section>
   )
 }
