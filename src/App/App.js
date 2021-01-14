@@ -81,6 +81,8 @@ function App() {
         exact path='/saved-activities'>
           <SavedActivities 
             savedActivities={savedActivities}
+            updateSavedActivities={updateSavedActivities}
+            setSavedActivities={setSavedActivities}
           />
       </Route>
     </section>
