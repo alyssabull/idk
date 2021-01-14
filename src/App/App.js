@@ -7,22 +7,21 @@ import './App.scss';
 
 function App() {
 
-  const [randomActivity, setRandomActivity] = useState({
-    accessibility: null,
-    activity: '',
-    key: '',
-    link: '',
-    participants: null,
-    price: null,
-    type: '',
-    isSaved: false
-  })
+  const [randomActivity, setRandomActivity] = useState({})
   const [savedActivities, setSavedActivities] = useState([])
 
+  useEffect(() => {
+    if(localStorage.length > 0) {
+      let storedActivities = localStorage.getItem('storedActivities')
+      let parsedActivities = JSON.parse(storedActivities)
+      setSavedActivities(parsedActivities)
+    }
+  })
 
   const generateNewActivity = () => {
     getRandomActivity()
     .then(data => formatAPIData(data))
+    .catch(error => console.error)
   }
 
   const formatAPIData = (data) => {
@@ -43,6 +42,13 @@ function App() {
     } else {
       setSavedActivities(activities)
     }
+    saveToStorage()
+  }
+
+  const saveToStorage = () => {
+    localStorage.clear()
+    let stringifiedActivities = JSON.stringify(savedActivities)
+    localStorage.setItem('storedActivities', stringifiedActivities)
   }
 
   return(
