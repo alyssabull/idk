@@ -5,7 +5,7 @@ const ActivityCard = (props) => {
     <section>
       <h1>{props.activity}</h1>
       <p>{props.type}</p>
-      <button onClick={props.deleteSavedActivity(props.activity.id)}>REMOVE ACTIVITY</button>
+      <button>REMOVE ACTIVITY</button>
     </section>
   )
 }

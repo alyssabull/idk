@@ -17,14 +17,6 @@ const SavedActivities = (props) => {
     })
   }
 
-  const deleteSavedActivity = (activityKey) => {
-    const filteredActivities = props.savedActivities.filter(savedActivity => {
-      return savedActivity.key !== activityKey
-    })
-
-    props.updateSavedActivities(filteredActivities, 'delete')
-  }
-
   return(
     <section>
       <h1>Saved Activities</h1>
