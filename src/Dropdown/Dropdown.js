@@ -16,7 +16,6 @@ const DropdownFilter = (props) => {
   }
 
   const handleDropdownChange = (event) => {
-    debugger
     props.filterSearchResults(event.target.value.toLowerCase(), event.target[0].id)
   }
 

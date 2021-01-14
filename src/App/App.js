@@ -22,7 +22,6 @@ function App() {
   }, [])
 
   const generateNewActivity = () => {
-    debugger
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
       getRandomActivity()
       .then(data => formatAPIData(data))
@@ -43,7 +42,8 @@ function App() {
   }
 
   const filterActivityParticipants = (data) => {
-    if (data.participants === parseInt(participantSearchNum)) {
+    console.log('data', data)
+    if (data.participants === Number(participantSearchNum)) {
       formatAPIData(data)
     } else {
       getFilteredActivity(activitySearchType)
@@ -53,15 +53,15 @@ function App() {
   }
 
   const formatAPIData = (data) => {
-    const cleanedData = {
-      activity: data.activity,
-      key: data.key,
-      link: data.link,
-      participants: data.participants,
-      type: data.type,
-      isSaved: false
-    }
-    setRandomActivity(cleanedData)
+      const cleanedData = {
+        activity: data.activity,
+        key: data.key,
+        link: data.link,
+        participants: data.participants,
+        type: data.type,
+        isSaved: false
+      }
+      setRandomActivity(cleanedData)
   }
 
   const updateSavedActivities = (activities, updateType) => {
@@ -124,8 +124,7 @@ function App() {
               {id: 0, name: 'Any', type: 'participants'},
               {id: 1, name: '1', type: 'participants'},
               {id: 2, name: '2', type: 'participants'},
-              {id: 3, name: '3', type: 'participants'},
-              {id: 4, name: '4+', type: 'participants'},
+              {id: 3, name: '3', type: 'participants'}
             ]}
             filterSearchResults={filterSearchResults}
             filterType={participantSearchNum}
