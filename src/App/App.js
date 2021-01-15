@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
+import { FaQuestion } from 'react-icons/fa'
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
 import DropdownFilter from '../Dropdown/Dropdown.js';
@@ -136,8 +137,13 @@ function App() {
       </Route>
       <Route 
         exact path='/'>
-      <Link to='random-activity'>
-        <button onClick={generateNewActivity}>Find an Activity</button>
+      <Link to='random-activity' className='find-activity'>
+        <button onClick={generateNewActivity} className='find-activity-button'>
+          {/* <p className='button-text'>FIND</p>
+          <p className='button-text'>AN</p>
+          <p className='button-text'>ACTIVITY</p> */}
+          <FaQuestion size={72}/>
+        </button>
       </Link>
       </Route>
       <Route 

@@ -47,3 +47,30 @@ select {
   height: 2em;
   width: 10em;
 }
+
+.find-activity {
+  display: flex;
+  justify-content: center;
+}
+
+.find-activity-button {
+  align-items: center;
+  border-radius: 50%;
+  height: 12em;
+  width: 12em;
+  border: solid black 0.1em;
+  background-color: black;
+  color: white;
+  transition: all .2s ease-in-out;
+  outline: none;
+}
+
+.find-activity-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button-text {
+  font-size: 1.5em;
+  margin: 0;
+}
