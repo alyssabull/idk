@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
-import { FaQuestion } from 'react-icons/fa'
+import { FaQuestion } from 'react-icons/fa';
+import { activityTypeDropdown, participantNumDropdown } from '../dropdownData.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
 import DropdownFilter from '../Dropdown/Dropdown.js';
@@ -143,30 +144,14 @@ function App() {
         <section className='filter-activities'>
           <p>Show me</p>
           <DropdownFilter 
-            dropdownValues={[
-              {id: 0, name: 'Any', type: 'activity'},
-              {id: 1, name: 'Busywork', type: 'activity'},
-              {id: 2, name: 'Charity', type: 'activity'},
-              {id: 3, name: 'Cooking', type: 'activity'},
-              {id: 4, name: 'DIY', type: 'activity'},
-              {id: 5, name: 'Education', type: 'activity'},
-              {id: 6, name: 'Music', type: 'activity'},
-              {id: 7, name: 'Recreational', type: 'activity'},
-              {id: 8, name: 'Relaxation', type: 'activity'},
-              {id: 9, name: 'Social', type: 'activity'}
-            ]}
+            dropdownValues={activityTypeDropdown}
             filterSearchResults={filterSearchResults}
             filterType={activitySearchType}
             dropdownType='activity'
           />
           <p>activity with</p>
           <DropdownFilter 
-            dropdownValues={[
-              {id: 0, name: 'Any', type: 'participants'},
-              {id: 1, name: '1', type: 'participants'},
-              {id: 2, name: '2', type: 'participants'},
-              {id: 3, name: '3', type: 'participants'}
-            ]}
+            dropdownValues={participantNumDropdown}
             filterSearchResults={filterSearchResults}
             filterType={participantSearchNum}
             dropdownType='participants'
