@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls/apiCalls.js';
 import { FaQuestion } from 'react-icons/fa';
 import { activityTypeDropdown, participantNumDropdown } from '../dropdownData.js';
+import NavBar from '../NavBar/NavBar.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
 import DropdownFilter from '../Dropdown/Dropdown.js';
@@ -136,15 +137,7 @@ function App() {
         </Route>
         <h1></h1>
         <nav>
-          <Link to='/'>
-            <p className='nav-title'>Home</p>
-          </Link>
-          <Link to='/random-activity'>
-            <p className='nav-title'>Random Activity</p>
-          </Link>
-          <Link to='/saved-activities'>
-          <p className='nav-title'>Saved Activities</p>
-          </Link>
+          <NavBar />
         </nav>
       </header>
       <Route exact path='/'>
