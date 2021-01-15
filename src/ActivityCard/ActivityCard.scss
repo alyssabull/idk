@@ -26,16 +26,13 @@
 }
 
 .card-details {
+  display: flex;
+  justify-content: center;
   font-size: 0.9em;
   margin-top: 0.2em;
 }
 
-.type {
-  margin-bottom: 0;
-}
-
-.participants {
-  display: flex;
+.detail {
+  margin-right: 3em;
   align-items: center;
-  justify-content: space-around;
 }
