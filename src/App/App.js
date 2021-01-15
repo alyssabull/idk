@@ -16,22 +16,13 @@ function App() {
   const [participantSearchNum, setParticipantSearchNum] = useState('any')
 
   useEffect(() => {
-    debugger
     if(localStorage.storedActivities && localStorage.length === 1) {
-      let storedActivities = localStorage.getItem('storedActivities')
-      let parsedActivities = JSON.parse(storedActivities)
-      setSavedActivities(parsedActivities)
+      getSavedActivitiesFromStorage()
     } else if (localStorage.currentActivity && localStorage.length === 1) {
-      let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
-      let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
-      setRandomActivity(parsedCurrentActivity)
+      getSavedCurrentActivityFromStorage()
     } else if (localStorage.length === 2) {
-      let storedActivities = localStorage.getItem('storedActivities')
-      let parsedActivities = JSON.parse(storedActivities)
-      setSavedActivities(parsedActivities)
-      let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
-      let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
-      setRandomActivity(parsedCurrentActivity)
+      getSavedActivitiesFromStorage()
+      getSavedCurrentActivityFromStorage()
     }
   }, [])
 
@@ -44,6 +35,18 @@ function App() {
     setActivitySearchType('any')
     setParticipantSearchNum('any')
   }, [randomActivity])
+
+  const getSavedActivitiesFromStorage = () => {
+    let storedActivities = localStorage.getItem('storedActivities')
+    let parsedActivities = JSON.parse(storedActivities)
+    setSavedActivities(parsedActivities)
+  }
+
+  const getSavedCurrentActivityFromStorage = () => {
+    let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
+    let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
+    setRandomActivity(parsedCurrentActivity)
+  }
 
   const generateNewActivity = () => {
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
