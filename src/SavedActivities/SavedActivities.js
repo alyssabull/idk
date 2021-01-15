@@ -23,7 +23,8 @@ const SavedActivities = (props) => {
     <section className='saved-activities'>
       <h1 className='saved-title'>Saved Activities</h1>
       <section className='all-cards'>
-        {generateActivityCards()}
+        {props.savedActivities.length > 0 && generateActivityCards() }
+        {props.savedActivities.length === 0 && <p>No saved activites yet! Your saved activities will be shown here.</p>}
       </section>
     </section>
   )

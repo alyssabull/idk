@@ -180,8 +180,6 @@ function App() {
           <SavedActivities 
             savedActivities={savedActivities}
             deleteSavedActivity={deleteSavedActivity}
-            // updateSavedActivities={updateSavedActivities}
-            // setSavedActivities={setSavedActivities}
           />
       </Route>
     </section>
