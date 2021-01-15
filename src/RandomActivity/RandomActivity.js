@@ -26,7 +26,7 @@ const RandomActivity = (props) => {
             <button onClick={() => toggleActivity(props.randomActivity)} className='buttons'>{props.randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}</button>
             <button onClick={props.generateNewActivity} className='buttons'>Show New Activity</button>
           </section>
-          {props.randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a className='get-started-link' href={`${props.randomActivity.link}`}>HERE!</a></p>}
+          {props.randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' className='get-started-link' href={`${props.randomActivity.link}`}>HERE!</a></p>}
         </section>
       )
   }
