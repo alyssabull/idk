@@ -1,6 +1,5 @@
 body {
   font-family: 'Libre Franklin', sans-serif;
-  background-color: #efefef;
 }
 
 button:hover {
@@ -10,16 +9,41 @@ button:hover {
 a {
   text-decoration: none;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 nav {
   display: flex;
   justify-content: flex-end;
-  background-color: #312F35;
 }
 
 .nav-title {
   margin: 1em 2.5em 1em 1em;
 }
 
+.website-title {
+  display: flex;
+  justify-content: center;
+  font-weight: lighter;
+  font-size: 15em;
+  margin: 0;
+}
+
+.tagline {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.filter-activities {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em 20em;
+}
+
+select {
+  height: 2em;
+  width: 10em;
+}

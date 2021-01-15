@@ -97,7 +97,8 @@ function App() {
         <p className='nav-title'>Saved Activities</p>
         </Link>
       </nav>
-      <h1>IDK</h1>
+      <h1 className='website-title'>IDK</h1>
+      <p className='tagline'>Say 'IDK' no more! Find your perfect activity by clicking below!</p>
       <Route path={["/", "/random-activity"]}>
         <section className='filter-activities'>
           <p>Show me</p>
@@ -118,7 +119,7 @@ function App() {
             filterType={activitySearchType}
             dropdownType='activity'
           />
-          <p>Activity with</p>
+          <p>activity with</p>
           <DropdownFilter 
             dropdownValues={[
               {id: 0, name: 'Any', type: 'participants'},
@@ -130,7 +131,7 @@ function App() {
             filterType={participantSearchNum}
             dropdownType='participants'
           />
-          <p>Participants</p>
+          <p>participants</p>
         </section>
       </Route>
       <Route 
