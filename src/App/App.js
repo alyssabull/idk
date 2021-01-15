@@ -90,17 +90,18 @@ function App() {
 
   return(
     <section>
-      <nav>
-        <Link to='/'>
-          <p className='nav-title'>Home</p>
-        </Link>
-        <Link to='/saved-activities'>
-        <p className='nav-title'>Saved Activities</p>
-        </Link>
-      </nav>
-      <h1 className='website-title'>IDK</h1>
-      <p className='tagline'>Say 'IDK' no more! Find your perfect activity by clicking below!</p>
-      <Route path={["/", "/random-activity"]}>
+      <header>
+        <h1 className='website-title'>IDK</h1>
+        <nav>
+          <Link to='/'>
+            <p className='nav-title'>Home</p>
+          </Link>
+          <Link to='/saved-activities'>
+          <p className='nav-title'>Saved Activities</p>
+          </Link>
+        </nav>
+      </header>
+      <Route exact path={["/", "/random-activity"]}>
         <section className='filter-activities'>
           <p>Show me</p>
           <DropdownFilter 
@@ -139,9 +140,6 @@ function App() {
         exact path='/'>
       <Link to='random-activity' className='find-activity'>
         <button onClick={generateNewActivity} className='find-activity-button'>
-          {/* <p className='button-text'>FIND</p>
-          <p className='button-text'>AN</p>
-          <p className='button-text'>ACTIVITY</p> */}
           <FaQuestion size={72}/>
         </button>
       </Link>
