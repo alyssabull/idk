@@ -91,7 +91,10 @@ function App() {
   return(
     <section>
       <header>
-        <h1 className='website-title'>IDK</h1>
+        <Route exact path={['/random-activity', '/saved-activities']}>
+          <h1 className='website-title'>IDK</h1>
+        </Route>
+        <h1></h1>
         <nav>
           <Link to='/'>
             <p className='nav-title'>Home</p>
@@ -101,7 +104,11 @@ function App() {
           </Link>
         </nav>
       </header>
-      <Route exact path={["/", "/random-activity"]}>
+      <Route exact path='/'>
+        <h1 className='home-title'>IDK</h1>
+        <p className='tagline'>Are you bored? Click below for fun!</p>
+      </Route>
+      <Route exact path={['/', '/random-activity']}>
         <section className='filter-activities'>
           <p>Show me</p>
           <DropdownFilter 
