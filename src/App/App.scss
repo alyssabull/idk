@@ -12,6 +12,10 @@ a {
   color: white;
 }
 
+a:hover {
+  transform: scale(1.1);
+}
+
 header {
   display: flex;
   justify-content: space-between;
