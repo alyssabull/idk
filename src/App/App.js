@@ -15,16 +15,24 @@ function App() {
   const [participantSearchNum, setParticipantSearchNum] = useState('any')
 
   useEffect(() => {
-    if(localStorage.length > 0) {
+    if(localStorage.length === 1) {
       let storedActivities = localStorage.getItem('storedActivities')
       let parsedActivities = JSON.parse(storedActivities)
       setSavedActivities(parsedActivities)
+    } else if (localStorage.length === 2) {
+      let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
+      let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
+      setRandomActivity(parsedCurrentActivity)
     }
   }, [])
 
   useEffect(() => {
     saveToStorage()
   }, [savedActivities])
+
+  useEffect(() => {
+    saveCurrentActivitiy()
+  }, [randomActivity])
 
   const generateNewActivity = () => {
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
@@ -47,7 +55,6 @@ function App() {
   }
 
   const filterActivityParticipants = (data) => {
-    console.log('data', data)
     if (data.participants === Number(participantSearchNum)) {
       formatAPIData(data)
     } else {
@@ -75,7 +82,6 @@ function App() {
     } else {
       setSavedActivities(activities)
     }
-    // saveToStorage()
   }
 
   const deleteSavedActivity = (activityKey) => {
@@ -90,6 +96,13 @@ function App() {
     localStorage.clear()
     let stringifiedActivities = JSON.stringify(savedActivities)
     localStorage.setItem('storedActivities', stringifiedActivities)
+  }
+
+  const saveCurrentActivitiy = () => {
+    localStorage.clear()
+    saveToStorage()
+    let stringifiedCurrentActivity = JSON.stringify(randomActivity)
+    localStorage.setItem('storedCurrentActivity', stringifiedCurrentActivity)
   }
 
   const filterSearchResults = (dropdownInput, dropdownType) => {
