@@ -32,6 +32,8 @@ function App() {
 
   useEffect(() => {
     saveCurrentActivitiy()
+    setActivitySearchType('any')
+    setParticipantSearchNum('any')
   }, [randomActivity])
 
   const generateNewActivity = () => {
