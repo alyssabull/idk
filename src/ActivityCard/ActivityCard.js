@@ -2,10 +2,10 @@ import './ActivityCard.scss'
 
 const ActivityCard = (props) => {
   return(
-    <section>
-      <h1>{props.activity}</h1>
-      <p>{props.type}</p>
-      <button onClick={() => props.deleteSavedActivity(props.id)}>REMOVE ACTIVITY</button>
+    <section className='single-activity-card'>
+      <h1 className='title'>{props.activity}</h1>
+      <p className='type'>{props.type}</p>
+      <button onClick={() => props.deleteSavedActivity(props.id)} className='remove-button'>REMOVE ACTIVITY</button>
     </section>
   )
 }

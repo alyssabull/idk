@@ -1,0 +1,17 @@
+.saved-activities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.saved-title {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+}
+
+.all-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

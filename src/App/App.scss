@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Libre Franklin', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button:hover {
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  text-decoration: none;
+  font-weight: bold;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f0f0f;
+  color: white;
+  height: 6.1em
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-title {
+  margin: 1em 2.5em 1em 1em;
+}
+
+.website-title {
+  display: flex;
+  font-weight: lighter;
+  font-size: 5em;
+  margin: 0em 0.2em;
+}
+
+.home-title {
+  display: flex;
+  justify-content: center;
+  font-size: 15em;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.tagline {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.filter-activities {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2em 20em;
+}
+
+select {
+  height: 2em;
+  width: 10em;
+}
+
+.find-activity {
+  display: flex;
+  justify-content: center;
+}
+
+.find-activity-button {
+  align-items: center;
+  border-radius: 50%;
+  height: 12em;
+  width: 12em;
+  border: solid black 0.1em;
+  background-color: black;
+  color: white;
+  transition: all .2s ease-in-out;
+  outline: none;
+}
+
+.find-activity-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button-text {
+  font-size: 1.5em;
+  margin: 0;
 }

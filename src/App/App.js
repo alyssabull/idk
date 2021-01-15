@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
+import { FaQuestion } from 'react-icons/fa'
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
 import DropdownFilter from '../Dropdown/Dropdown.js';
@@ -14,12 +15,24 @@ function App() {
   const [participantSearchNum, setParticipantSearchNum] = useState('any')
 
   useEffect(() => {
-    if(localStorage.length > 0) {
+    if(localStorage.length === 1) {
       let storedActivities = localStorage.getItem('storedActivities')
       let parsedActivities = JSON.parse(storedActivities)
       setSavedActivities(parsedActivities)
+    } else if (localStorage.length === 2) {
+      let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
+      let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
+      setRandomActivity(parsedCurrentActivity)
     }
   }, [])
+
+  useEffect(() => {
+    saveToStorage()
+  }, [savedActivities])
+
+  useEffect(() => {
+    saveCurrentActivitiy()
+  }, [randomActivity])
 
   const generateNewActivity = () => {
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
@@ -42,7 +55,6 @@ function App() {
   }
 
   const filterActivityParticipants = (data) => {
-    console.log('data', data)
     if (data.participants === Number(participantSearchNum)) {
       formatAPIData(data)
     } else {
@@ -70,13 +82,27 @@ function App() {
     } else {
       setSavedActivities(activities)
     }
-    saveToStorage()
+  }
+
+  const deleteSavedActivity = (activityKey) => {
+    const filteredActivities = savedActivities.filter(savedActivity => {
+      return savedActivity.key !== activityKey
+    })
+
+    setSavedActivities(filteredActivities)
   }
 
   const saveToStorage = () => {
     localStorage.clear()
     let stringifiedActivities = JSON.stringify(savedActivities)
     localStorage.setItem('storedActivities', stringifiedActivities)
+  }
+
+  const saveCurrentActivitiy = () => {
+    localStorage.clear()
+    saveToStorage()
+    let stringifiedCurrentActivity = JSON.stringify(randomActivity)
+    localStorage.setItem('storedCurrentActivity', stringifiedCurrentActivity)
   }
 
   const filterSearchResults = (dropdownInput, dropdownType) => {
@@ -89,16 +115,28 @@ function App() {
 
   return(
     <section>
-      <nav>
-        <Link to='/'>
-          Home
-        </Link>
-        <Link to='/saved-activities'>
-          Saved Activities
-        </Link>
-      </nav>
-      <h1>IDK</h1>
-      <Route path={["/", "/random-activity"]}>
+      <header>
+        <Route exact path={['/random-activity', '/saved-activities']}>
+          <h1 className='website-title'>IDK</h1>
+        </Route>
+        <h1></h1>
+        <nav>
+          <Link to='/'>
+            <p className='nav-title'>Home</p>
+          </Link>
+          <Link to='/random-activity'>
+            <p className='nav-title'>Random Activity</p>
+          </Link>
+          <Link to='/saved-activities'>
+          <p className='nav-title'>Saved Activities</p>
+          </Link>
+        </nav>
+      </header>
+      <Route exact path='/'>
+        <h1 className='home-title'>IDK</h1>
+        <p className='tagline'>Are you bored? Click below for fun!</p>
+      </Route>
+      <Route exact path={['/', '/random-activity']}>
         <section className='filter-activities'>
           <p>Show me</p>
           <DropdownFilter 
@@ -118,7 +156,7 @@ function App() {
             filterType={activitySearchType}
             dropdownType='activity'
           />
-          <p>Activity with</p>
+          <p>activity with</p>
           <DropdownFilter 
             dropdownValues={[
               {id: 0, name: 'Any', type: 'participants'},
@@ -130,13 +168,15 @@ function App() {
             filterType={participantSearchNum}
             dropdownType='participants'
           />
-          <p>Participants</p>
+          <p>participants</p>
         </section>
       </Route>
       <Route 
         exact path='/'>
-      <Link to='random-activity'>
-        <button onClick={generateNewActivity}>Find an Activity</button>
+      <Link to='random-activity' className='find-activity'>
+        <button onClick={generateNewActivity} className='find-activity-button'>
+          <FaQuestion size={72}/>
+        </button>
       </Link>
       </Route>
       <Route 
@@ -152,8 +192,7 @@ function App() {
         exact path='/saved-activities'>
           <SavedActivities 
             savedActivities={savedActivities}
-            updateSavedActivities={updateSavedActivities}
-            setSavedActivities={setSavedActivities}
+            deleteSavedActivity={deleteSavedActivity}
           />
       </Route>
     </section>

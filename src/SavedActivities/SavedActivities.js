@@ -5,30 +5,27 @@ const SavedActivities = (props) => {
   const generateActivityCards = () => {
     return props.savedActivities.map(activity => {
       return(
-        <ActivityCard 
-          activity={activity.activity}
-          type={activity.type}
-          participants={activity.participants}
-          deleteSavedActivity={deleteSavedActivity}
-          id={activity.key}
-          key={Math.random()}
-        />
+        <section>
+          <ActivityCard 
+            activity={activity.activity}
+            type={activity.type}
+            participants={activity.participants}
+            deleteSavedActivity={props.deleteSavedActivity}
+            id={activity.key}
+            key={activity.key}
+          />
+        </section>
       )
     })
   }
 
-  const deleteSavedActivity = (activityKey) => {
-    const filteredActivities = props.savedActivities.filter(savedActivity => {
-      return savedActivity.key !== activityKey
-    })
-
-    props.setSavedActivities(filteredActivities)
-  }
-
   return(
-    <section>
-      <h1>Saved Activities</h1>
-      {generateActivityCards()}
+    <section className='saved-activities'>
+      <h1 className='saved-title'>Saved Activities</h1>
+      <section className='all-cards'>
+        {props.savedActivities.length > 0 && generateActivityCards() }
+        {props.savedActivities.length === 0 && <p>No saved activites yet! Your saved activities will be shown here.</p>}
+      </section>
     </section>
   )
 }

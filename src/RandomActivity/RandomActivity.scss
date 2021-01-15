@@ -1,0 +1,41 @@
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 1em;
+  padding: 2em;
+  margin: 2em 6em;
+}
+
+.activity-title {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.activity-details {
+  display: flex;
+  font-size: 1em;
+  margin-bottom: 4em;
+}
+
+.activity-type {
+  margin-right: 3em;
+}
+
+.buttons {
+  margin: 0em 1.5em;
+  height: 3em;
+  width: 12em;
+  padding: 0;
+  border: solid black 0.2em;
+  background-color: black;
+  color: white;
+  font-size: 1.3em;
+  font-weight: bolder;
+  outline: none;
+}
+
+.get-started-link {
+  color: black;
+  margin-top: 3em;
+}

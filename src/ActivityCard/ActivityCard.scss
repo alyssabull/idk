@@ -1,0 +1,26 @@
+.single-activity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10em;
+  width: 16em;
+  margin: 0.75em;
+  border: solid black 0.2em;
+  padding: 1.2em;
+}
+
+.title {
+  font-size: 1em;
+  margin: 0;
+}
+
+.remove-button {
+  margin-top: 1em;
+  font-weight: bolder;
+  color: white;
+  background-color: black;
+  border: solid black 0.2em;
+  height: 2.5em;
+  width: 13em;
+}
