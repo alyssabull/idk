@@ -5,7 +5,7 @@ const SavedActivities = (props) => {
   const generateActivityCards = () => {
     return props.savedActivities.map(activity => {
       return(
-        <section className='single-activity-card'>
+        <section>
           <ActivityCard 
             activity={activity.activity}
             type={activity.type}
