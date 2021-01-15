@@ -19,8 +19,8 @@ const RandomActivity = (props) => {
         <section className='activity-card'>
           <h1 className='activity-title'>{props.randomActivity.activity}</h1>
           <section className='activity-details'>
-            <p className='activity-type'><b>Activity Type:</b> {props.randomActivity.type}</p>
-            <p className='activity-participants'><b>Number of Participants:</b> {props.randomActivity.participants}</p>
+            <p className='activity-type'><b>Activity Type:</b> &nbsp;{props.randomActivity.type}</p>
+            <p className='activity-participants'><b>Number of Participants:</b> &nbsp; {props.randomActivity.participants}</p>
           </section>
           <section>
             <button onClick={() => toggleActivity(props.randomActivity)} className='buttons'>{props.randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}</button>
