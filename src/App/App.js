@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
-import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls.js';
+import { getFilteredActivity, getFilteredParticipantActivity, getRandomActivity } from '../apiCalls/apiCalls.js';
 import { FaQuestion } from 'react-icons/fa';
 import { activityTypeDropdown, participantNumDropdown } from '../dropdownData.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
@@ -16,11 +16,19 @@ function App() {
   const [participantSearchNum, setParticipantSearchNum] = useState('any')
 
   useEffect(() => {
-    if(localStorage.length === 1) {
+    debugger
+    if(localStorage.storedActivities && localStorage.length === 1) {
       let storedActivities = localStorage.getItem('storedActivities')
       let parsedActivities = JSON.parse(storedActivities)
       setSavedActivities(parsedActivities)
+    } else if (localStorage.currentActivity && localStorage.length === 1) {
+      let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
+      let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
+      setRandomActivity(parsedCurrentActivity)
     } else if (localStorage.length === 2) {
+      let storedActivities = localStorage.getItem('storedActivities')
+      let parsedActivities = JSON.parse(storedActivities)
+      setSavedActivities(parsedActivities)
       let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
       let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
       setRandomActivity(parsedCurrentActivity)
