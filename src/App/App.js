@@ -22,6 +22,10 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    saveToStorage()
+  }, [savedActivities])
+
   const generateNewActivity = () => {
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
       getRandomActivity()
@@ -71,7 +75,15 @@ function App() {
     } else {
       setSavedActivities(activities)
     }
-    saveToStorage()
+    // saveToStorage()
+  }
+
+  const deleteSavedActivity = (activityKey) => {
+    const filteredActivities = savedActivities.filter(savedActivity => {
+      return savedActivity.key !== activityKey
+    })
+
+    setSavedActivities(filteredActivities)
   }
 
   const saveToStorage = () => {
@@ -98,6 +110,9 @@ function App() {
         <nav>
           <Link to='/'>
             <p className='nav-title'>Home</p>
+          </Link>
+          <Link to='/random-activity'>
+            <p className='nav-title'>Random Activity</p>
           </Link>
           <Link to='/saved-activities'>
           <p className='nav-title'>Saved Activities</p>
@@ -164,8 +179,9 @@ function App() {
         exact path='/saved-activities'>
           <SavedActivities 
             savedActivities={savedActivities}
-            updateSavedActivities={updateSavedActivities}
-            setSavedActivities={setSavedActivities}
+            deleteSavedActivity={deleteSavedActivity}
+            // updateSavedActivities={updateSavedActivities}
+            // setSavedActivities={setSavedActivities}
           />
       </Route>
     </section>

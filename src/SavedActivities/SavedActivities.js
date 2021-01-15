@@ -10,21 +10,13 @@ const SavedActivities = (props) => {
             activity={activity.activity}
             type={activity.type}
             participants={activity.participants}
-            deleteSavedActivity={deleteSavedActivity}
+            deleteSavedActivity={props.deleteSavedActivity}
             id={activity.key}
-            key={Math.random()}
+            key={activity.key}
           />
         </section>
       )
     })
-  }
-
-  const deleteSavedActivity = (activityKey) => {
-    const filteredActivities = props.savedActivities.filter(savedActivity => {
-      return savedActivity.key !== activityKey
-    })
-
-    props.setSavedActivities(filteredActivities)
   }
 
   return(
