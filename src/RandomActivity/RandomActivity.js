@@ -22,11 +22,11 @@ const RandomActivity = (props) => {
             <p className='activity-type'><b>Activity Type:</b> {props.randomActivity.type}</p>
             <p className='activity-participants'><b>Number of Participants:</b> {props.randomActivity.participants}</p>
           </section>
-          <section className='buttons'>
-            <button onClick={() => toggleActivity(props.randomActivity)}>{props.randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}</button>
-            <button onClick={props.generateNewActivity}>Show New Activity</button>
-            {props.randomActivity.link !== '' && <button>Get Started Here!</button>}
+          <section>
+            <button onClick={() => toggleActivity(props.randomActivity)} className='buttons'>{props.randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}</button>
+            <button onClick={props.generateNewActivity} className='buttons'>Show New Activity</button>
           </section>
+          {props.randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a className='get-started-link' href={`${props.randomActivity.link}`}>HERE!</a></p>}
         </section>
       )
   }
