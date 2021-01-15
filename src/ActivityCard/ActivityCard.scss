@@ -24,3 +24,18 @@
   height: 2.5em;
   width: 13em;
 }
+
+.card-details {
+  font-size: 0.9em;
+  margin-top: 0.2em;
+}
+
+.type {
+  margin-bottom: 0;
+}
+
+.participants {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
