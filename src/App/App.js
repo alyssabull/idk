@@ -6,7 +6,7 @@ import { activityTypeDropdown, participantNumDropdown } from '../dropdownData.js
 import NavBar from '../NavBar/NavBar.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
-import DropdownFilter from '../Dropdown/Dropdown.js';
+import Dropdown from '../Dropdown/Dropdown.js';
 import './App.scss';
 
 function App() {
@@ -147,14 +147,14 @@ function App() {
       <Route exact path={['/', '/random-activity']}>
         <section className='filter-activities'>
           <p>Show me</p>
-          <DropdownFilter 
+          <Dropdown 
             dropdownValues={activityTypeDropdown}
             filterSearchResults={filterSearchResults}
             filterType={activitySearchType}
             dropdownType='activity'
           />
           <p>activity with</p>
-          <DropdownFilter 
+          <Dropdown
             dropdownValues={participantNumDropdown}
             filterSearchResults={filterSearchResults}
             filterType={participantSearchNum}
