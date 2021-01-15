@@ -12,6 +12,10 @@ a {
   color: white;
 }
 
+a:hover {
+  transform: scale(1.1);
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -19,15 +23,6 @@ header {
   background-color: #0f0f0f;
   color: white;
   height: 6.1em
-}
-
-nav {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.nav-title {
-  margin: 1em 2.5em 1em 1em;
 }
 
 .website-title {
@@ -81,7 +76,10 @@ select {
   outline: none;
 }
 
-.find-activity-button:hover {
+button:hover {
+  color: black;
+  background-color: white;
+  border: none;
   transform: scale(1.1);
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

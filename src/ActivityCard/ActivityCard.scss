@@ -24,3 +24,16 @@
   height: 2.5em;
   width: 13em;
 }
+
+.card-details {
+  display: flex;
+  justify-content: center;
+  font-size: 0.9em;
+  margin-top: 0.2em;
+}
+
+.detail {
+  margin-right: 3em;
+  display: flex;
+  align-items: center;
+}
