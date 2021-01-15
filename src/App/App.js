@@ -90,6 +90,7 @@ function App() {
     })
 
     setSavedActivities(filteredActivities)
+    generateNewActivity()
   }
 
   const saveToStorage = () => {
@@ -134,7 +135,7 @@ function App() {
       </header>
       <Route exact path='/'>
         <h1 className='home-title'>IDK</h1>
-        <p className='tagline'>Are you bored? Click below for fun!</p>
+        <p className='tagline'>Not sure what to today? Click below for some fun ideas!</p>
       </Route>
       <Route exact path={['/', '/random-activity']}>
         <section className='filter-activities'>
