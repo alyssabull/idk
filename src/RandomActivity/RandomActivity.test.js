@@ -8,10 +8,12 @@ import '@testing-library/jest-dom';
 describe('Dropdown', () => {
   let mockGenerateNewActivity;
   let mockUpdateSavedActivities;
+  let mockToggleActivity;
   
   beforeEach(() => {
     mockGenerateNewActivity = jest.fn()
     mockUpdateSavedActivities = jest.fn()
+    mockToggleActivity = jest.fn()
 
     render(
       <MemoryRouter>
@@ -43,5 +45,16 @@ describe('Dropdown', () => {
     expect(saveActivityButton).toBeInTheDocument()
   });
 
-  // it('should fire tog')
+  it('should fire generateNewActivity on Show New Activity button click', () => {
+    const newActivityButton = screen.getByText('Show New Activity')
+
+    userEvent.click(newActivityButton)
+
+    expect(screen.queryByText(sampleRandomActivity)).not.toBeInTheDocument()
+    // expect(screen.getByText('- Remove Activity')).toBeInTheDocument()
+  })
+
+  it('should call toggleActivity with the current randomActivity', () => {
+
+  })
 });
