@@ -10,3 +10,36 @@ export const sampleActivityDropdown = [
   {id: 8, name: 'Relaxation', type: 'activity'},
   {id: 9, name: 'Social', type: 'activity'}
 ]
+
+export const sampleRandomActivity = {
+  activity: 'Catch up with a friend',
+  key: '0',
+  link: '',
+  participants: 2,
+  type: 'social',
+  isSaved: false
+}
+
+export const sampleSavedActivities = [{ 
+  activity: 'Visit your past teachers',
+  key: '1',
+  link: '',
+  participants: 1,
+  type: 'social',
+  isSaved: true
+}, {
+  activity: 'Plant a tree',
+  key: '2',
+  link: '',
+  participants: 1,
+  type: 'recreational',
+  isSaved: true
+}, {
+  activity: 'Learn Morse Code',
+  key: '3',
+  link: 'https://en.wikipedia.org/wiki/Morse_code',
+  participants: 1,
+  type: 'education',
+  isSaved: true
+}
+]
