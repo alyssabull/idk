@@ -1,36 +1,36 @@
 import './RandomActivity.scss'
 
-const RandomActivity = (props) => {
+const RandomActivity = ({ randomActivity, generateNewActivity, updateSavedActivities}) => {
   const toggleActivity = (activity) => {
     if (activity.isSaved === false) {
       activity.isSaved = true
-      return props.updateSavedActivities(activity, 'save')
+      return updateSavedActivities(activity, 'save')
     } else if (activity.isSaved === true) {
       activity.isSaved = false
-      const filteredActivities = props.savedActivities.filter(savedActivity => {
+      const filteredActivities = savedActivities.filter(savedActivity => {
         return savedActivity.key !== activity.key
       })
-      props.updateSavedActivities(filteredActivities, 'delete')
+      updateSavedActivities(filteredActivities, 'delete')
     }
   }
 
   const generateActivityCard = () => {
       return(
         <section className='activity-card'>
-          <h1 className='activity-title'>{props.randomActivity.activity}</h1>
+          <h1 className='activity-title'>{randomActivity.activity}</h1>
           <section className='activity-details'>
-            <p className='activity-type'><b>Activity Type:</b> &nbsp;{props.randomActivity.type}</p>
-            <p className='activity-participants'><b>Number of Participants:</b> &nbsp; {props.randomActivity.participants}</p>
+            <p className='activity-type'><b>Activity Type:</b> &nbsp;{randomActivity.type}</p>
+            <p className='activity-participants'><b>Number of Participants:</b> &nbsp; {randomActivity.participants}</p>
           </section>
           <section>
-            <button onClick={() => toggleActivity(props.randomActivity, props.savedActivites, props.updateSavedActivities)} className='buttons'>
-              {props.randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}
+            <button onClick={() => toggleActivity(randomActivity)} className='buttons'>
+              {randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}
             </button>
-            <button onClick={props.generateNewActivity} className='buttons'>
+            <button onClick={generateNewActivity} className='buttons'>
               Show New Activity
             </button>
           </section>
-          {props.randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' className='get-started-link' href={`${props.randomActivity.link}`}>HERE!</a></p>}
+          {randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' className='get-started-link' href={`${randomActivity.link}`}>HERE!</a></p>}
         </section>
       )
   }

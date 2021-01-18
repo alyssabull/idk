@@ -170,7 +170,6 @@ function App() {
           <RandomActivity 
             randomActivity={randomActivity}
             generateNewActivity={generateNewActivity}
-            savedActivities={savedActivities}
             updateSavedActivities={updateSavedActivities}
           />
       </Route>
