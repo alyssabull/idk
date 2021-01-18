@@ -10,7 +10,7 @@ const DropdownFilter = ({ dropdownValues, filterSearchResults, dropdownType}) =>
             data-testid={value.name}
             key={value.id}
             value={`${value.name}`}>
-              <label for={value.id}>{value.name}</label>
+              {value.name}
           </option>
       )
     })
@@ -25,7 +25,7 @@ const DropdownFilter = ({ dropdownValues, filterSearchResults, dropdownType}) =>
       id={`${dropdownType} dropdown`}
       data-testid = 'dropdown'
       onChange={handleDropdownChange}>
-        <label for={`${dropdownType} dropdown`}>{generateDropdown()}</label>
+        {generateDropdown()}
     </select>
   )
 }
