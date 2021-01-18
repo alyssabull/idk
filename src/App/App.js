@@ -47,6 +47,19 @@ function App() {
     setRandomActivity(parsedCurrentActivity)
   }
 
+  const saveToStorage = () => {
+    localStorage.clear()
+    let stringifiedActivities = JSON.stringify(savedActivities)
+    localStorage.setItem('storedActivities', stringifiedActivities)
+  }
+
+  const saveCurrentActivitiy = () => {
+    localStorage.clear()
+    saveToStorage()
+    let stringifiedCurrentActivity = JSON.stringify(randomActivity)
+    localStorage.setItem('storedCurrentActivity', stringifiedCurrentActivity)
+  }
+
   const generateNewActivity = () => {
     if (activitySearchType === 'any' && participantSearchNum === 'any') {
       getRandomActivity()
@@ -103,20 +116,7 @@ function App() {
     })
 
     setSavedActivities(filteredActivities)
-    generateNewActivity()
-  }
-
-  const saveToStorage = () => {
-    localStorage.clear()
-    let stringifiedActivities = JSON.stringify(savedActivities)
-    localStorage.setItem('storedActivities', stringifiedActivities)
-  }
-
-  const saveCurrentActivitiy = () => {
-    localStorage.clear()
-    saveToStorage()
-    let stringifiedCurrentActivity = JSON.stringify(randomActivity)
-    localStorage.setItem('storedCurrentActivity', stringifiedCurrentActivity)
+    generateNewActivity(activitySearchType, participantSearchNum)
   }
 
   const filterSearchResults = (dropdownInput, dropdownType) => {
