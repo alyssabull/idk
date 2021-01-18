@@ -6,3 +6,10 @@
 .nav-title {
   margin: 1em 2.5em 1em 1em;
 }
+
+@media only screen and (max-width: 812px) {
+  .nav-title {
+    font-size: 0.75em;
+    margin: 0.5em 1em 0.5em 1em;
+  }
+}

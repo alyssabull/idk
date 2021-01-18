@@ -23,7 +23,7 @@ const RandomActivity = ({ randomActivity, savedActivities, generateNewActivity, 
             <p className='activity-type'><b>Activity Type:</b> &nbsp;{randomActivity.type}</p>
             <p className='activity-participants'><b>Number of Participants:</b> &nbsp; {randomActivity.participants}</p>
           </section>
-          <section>
+          <section className='button-container'>
             <button onClick={() => toggleActivity(randomActivity)} className='buttons'>
               {randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}
             </button>

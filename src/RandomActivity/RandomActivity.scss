@@ -35,7 +35,45 @@
   outline: none;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
 .get-started-link {
   color: black;
   margin-top: 3em;
+}
+
+
+@media only screen and (max-width: 812px) {
+  .activity-card {
+    margin: 1em;
+    padding: 1em;
+    border: solid black 0.5em;
+  }
+
+  .activity-title {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  .activity-details {
+    display: flex;
+    font-size: 0.8em;
+    margin-bottom: 2em;
+  }
+
+  .buttons {
+    margin: 0.5em 1em;
+    height: 3.5em;
+    width: 10em;
+    padding: 0;
+    border: solid black 0.2em;
+    background-color: black;
+    color: white;
+    font-size: 0.7em;
+    font-weight: bolder;
+    outline: none;
+  }
 }
