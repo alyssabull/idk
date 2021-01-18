@@ -1,21 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import SavedActivities from './SavedActivities.js';
 import { sampleSavedActivities } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 
 describe('Saved Activities', () => {
-  let mockDeleteSavedActivities
+  let mockDeleteSavedActivity
 
   beforeEach(() => {
-    mockDeleteSavedActivities = jest.fn()
+    mockDeleteSavedActivity = jest.fn()
 
     render(
       <MemoryRouter>
         <SavedActivities
           savedActivities={sampleSavedActivities}
-          deleteSavedActivities={mockDeleteSavedActivities}
+          deleteSavedActivities={mockDeleteSavedActivity}
         />
       </MemoryRouter>
     );
@@ -32,20 +31,4 @@ describe('Saved Activities', () => {
     expect(savedActivityType).toBeInTheDocument();
     expect(savedActivityParticipants).toHaveLength(3);
   });
-
-  // it('should fire filterSearchResults when a selection is made', () => {
-  //   const dropdown = screen.getByTestId('dropdown');
-
-  //   userEvent.selectOptions(dropdown, ['Cooking'] );
-
-  //   expect(mockFilterSearchResults).toHaveBeenCalled();
-  // })
-
-  // it('should call filterSearchResults with the target value and type', () => {
-  //   const dropdown = screen.getByTestId('dropdown');
-
-  //   userEvent.selectOptions(dropdown, ['Cooking'] );
-
-  //   expect(mockFilterSearchResults).toHaveBeenCalledWith('cooking', 'activity');
-  // })
 });
