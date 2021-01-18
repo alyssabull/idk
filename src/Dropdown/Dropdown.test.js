@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 
 describe('Dropdown', () => {
   let mockFilterSearchResults;
-  
+
   beforeEach(() => {
     mockFilterSearchResults = jest.fn()
 
@@ -43,5 +43,13 @@ describe('Dropdown', () => {
     userEvent.selectOptions(dropdown, ['Cooking'] );
 
     expect(mockFilterSearchResults).toHaveBeenCalled();
+  })
+
+  it('should call filterSearchResults with the target value and type', () => {
+    const dropdown = screen.getByTestId('dropdown');
+
+    userEvent.selectOptions(dropdown, ['Cooking'] );
+
+    expect(mockFilterSearchResults).toHaveBeenCalledWith('cooking', 'activity');
   })
 });
