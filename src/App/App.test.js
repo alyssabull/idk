@@ -1,4 +1,4 @@
-import { act, render, screen} from '@testing-library/react';
+import { act, render, screen, waitFor} from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App.js';
 import userEvent from '@testing-library/user-event';
@@ -98,4 +98,25 @@ describe('Saved Activities', () => {
 
     expect(localStorage.setItem).toHaveBeenCalled()
   });
+
+  it('should save current activity on button click', async () => {
+    const randomActivityButton = screen.getByText('Random Activity')
+    
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const saveActivityButton = screen.getByText('+ Save Activity')
+
+    userEvent.click(saveActivityButton)
+
+    const removeActivityButton = screen.getByText('- Remove Activity')
+
+    expect(removeActivityButton).toBeInTheDocument()
+  })
 });
