@@ -10,7 +10,6 @@ import Dropdown from '../Dropdown/Dropdown.js';
 import './App.scss';
 
 function App() {
-
   const [randomActivity, setRandomActivity] = useState({})
   const [savedActivities, setSavedActivities] = useState([])
   const [activitySearchType, setActivitySearchType] = useState('any')
@@ -87,7 +86,7 @@ function App() {
       getFilteredActivity(activitySearchType)
       .then(data => filterActivityParticipants(data))
       .catch(error => console.error)
-    }
+    } 
   }
 
   const formatAPIData = (data) => {

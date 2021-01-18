@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import './Dropdown.scss';
 
 const Dropdown = ({ dropdownValues, filterSearchResults, dropdownType}) => {
 

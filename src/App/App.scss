@@ -7,6 +7,8 @@ button:hover {
 }
 
 a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   font-weight: bold;
   color: white;
@@ -49,6 +51,7 @@ header {
 
 .filter-activities {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   margin: 2em 20em;
@@ -87,4 +90,26 @@ button:hover {
 .button-text {
   font-size: 1.5em;
   margin: 0;
+}
+
+@media only screen and (max-width: 812px) {
+  .filter-activities {
+    margin: 1em 5em;
+  }
+
+  p {
+    margin: 0.75em;
+  }
+
+  .tagline {
+    margin: 1em;
+  }
+
+  .home-title {
+    font-size: 12em;
+  }
+}
+
+#colorBlindSVG {
+  display: none;
 }
