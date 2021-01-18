@@ -7,9 +7,12 @@ import '@testing-library/jest-dom';
 jest.mock('../apiCalls/apiCalls.js')
 
 describe('Saved Activities', () => {
-  let mockGetRandomActivity;
-  let mockGetFilteredActivity;
-  let mockGetFilteredParticipantActivity;
+
+  Object.definedProperty(window, 'localStorage', {
+    value: {
+      getItem: (() => jest.fn())
+    }
+  })
 
   beforeEach(() => {
 
@@ -32,5 +35,9 @@ describe('Saved Activities', () => {
     expect(activityTypeDropdown).toBeInTheDocument()
     expect(participantNumDropdown).toBeInTheDocument()
     expect(getActivityButton).toBeInTheDocument();
+  });
+  
+  it('should fetch activities from storage on page load', () =>  {  
+    expect(getItem).toHaveBeenCalled()
   });
 });
