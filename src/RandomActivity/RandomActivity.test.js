@@ -51,7 +51,19 @@ describe('Dropdown', () => {
     expect(screen.queryByText(sampleRandomActivity)).not.toBeInTheDocument()
   })
 
-  it('should call toggleActivity with the current randomActivity', () => {
-    screen.debug()
+  it('should fire updateSavedActivities when save activity button is clicked', () => {
+    const saveActivityButton = screen.getByText('+ Save Activity')
+
+    userEvent.click(saveActivityButton)
+
+    expect(mockUpdateSavedActivities).toHaveBeenCalled()
+  })
+
+  it('should call updateSavedActivites with filteredActivites and a delete string to remove activity', () => {
+    const saveActivityButton = screen.getByText('- Remove Activity')
+
+    userEvent.click(saveActivityButton)
+
+    expect(mockUpdateSavedActivities).toHaveBeenCalledWith(sampleSavedActivities, 'delete')
   })
 });

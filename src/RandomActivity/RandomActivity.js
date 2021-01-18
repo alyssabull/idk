@@ -1,7 +1,18 @@
-import { toggleActivity } from '../utilities/utilities.js';
 import './RandomActivity.scss'
 
 const RandomActivity = (props) => {
+  const toggleActivity = (activity) => {
+    if (activity.isSaved === false) {
+      activity.isSaved = true
+      return props.updateSavedActivities(activity, 'save')
+    } else if (activity.isSaved === true) {
+      activity.isSaved = false
+      const filteredActivities = props.savedActivities.filter(savedActivity => {
+        return savedActivity.key !== activity.key
+      })
+      props.updateSavedActivities(filteredActivities, 'delete')
+    }
+  }
 
   const generateActivityCard = () => {
       return(
