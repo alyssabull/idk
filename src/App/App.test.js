@@ -1,19 +1,20 @@
-import { act, render, screen, waitFor} from '@testing-library/react';
+import { act, render, screen} from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App.js';
 import userEvent from '@testing-library/user-event';
-import { getRandomActivity, getFilteredActivity, getFilteredParticipantActivity} from '../apiCalls/apiCalls.js';
-import { sampleRandomActivity, sampleSavedActivities } from '../sampleTestData.js';
+import { getRandomActivity} from '../apiCalls/apiCalls.js';
+import { sampleRandomActivity} from '../sampleTestData.js';
 import '@testing-library/jest-dom';
+import { GiTrumpet } from 'react-icons/gi';
 jest.mock('../apiCalls/apiCalls.js')
 
 describe('Saved Activities', () => {
   Object.defineProperty(window, 'localStorage', {
     value: {
-      getItem: jest.fn(() => null),
       setItem: jest.fn(() => null),
       clear: jest.fn(() => null)
-    }
+    },
+    writeable: true
   })
 
   beforeEach(() => {
@@ -38,15 +39,9 @@ describe('Saved Activities', () => {
     expect(participantNumDropdown).toBeInTheDocument()
     expect(getActivityButton).toBeInTheDocument();
   });
-  
-  // it('should fetch activities from storage on page load', () =>  {  
-
-  //   expect(localStorage.getItem).toHaveBeenCalled()
-  // });
 
   it('should navigate away from the home screen on button click', () =>  {  
     const randomActivityButton = screen.getByText('Random Activity')
-    
     userEvent.click(randomActivityButton)
     
     expect(screen.queryByText('Not sure what to today? Click below for some fun ideas!')).not.toBeInTheDocument()
@@ -64,7 +59,6 @@ describe('Saved Activities', () => {
 
   it('should be able to get and display random activities on button click', async () =>  {  
     const randomActivityButton = screen.getByText('Random Activity')
-    
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -86,7 +80,6 @@ describe('Saved Activities', () => {
 
   it('should save current activity to storage on button click', async () =>  {  
     const randomActivityButton = screen.getByText('Random Activity')
-    
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -101,7 +94,6 @@ describe('Saved Activities', () => {
 
   it('should be able to toggle save or remove saved current activity on button click', async () => {
     const randomActivityButton = screen.getByText('Random Activity')
-    
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -112,21 +104,17 @@ describe('Saved Activities', () => {
     })
 
     const saveActivityButton = screen.getByText('+ Save Activity')
-
     userEvent.click(saveActivityButton)
 
     const removeActivityButton = screen.getByText('- Remove Activity')
-
     expect(removeActivityButton).toBeInTheDocument()
 
     userEvent.click(removeActivityButton)
-
     expect(saveActivityButton).toBeInTheDocument()
   })
 
   it('should be able to save, view saved activities then remove saved activities', async () => {
     const randomActivityButton = screen.getByText('Random Activity')
-    
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -137,11 +125,9 @@ describe('Saved Activities', () => {
     })
 
     const saveActivityButton = screen.getByText('+ Save Activity')
-
     userEvent.click(saveActivityButton)
 
     const savedActivityButton = screen.getByText('Saved Activities')
-    
     userEvent.click(savedActivityButton)
 
     const savedActivityTitle = screen.getByText('Catch up with a friend')
@@ -160,7 +146,6 @@ describe('Saved Activities', () => {
     })
 
     const noActivitesMessage = screen.getByText('No saved activites yet! Your saved activities will be shown here.')
-
     expect(noActivitesMessage).toBeInTheDocument()
   })
 });
