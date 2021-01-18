@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import ActivityCard from './ActivityCard.js';
-import { sampleRandomActivity } from '../sampleTestData.js';
+import { sampleRandomActivity, sampleSavedActivities } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 
 describe('Saved Activities', () => {
@@ -33,5 +33,21 @@ describe('Saved Activities', () => {
     expect(savedActivityName).toBeInTheDocument();
     expect(savedActivityType).toBeInTheDocument();
     expect(savedActivityParticipants).toBeInTheDocument();
+  });
+
+  it('should fire deleteSavedActivity function on button click', () =>  {  
+    const deleteSavedActivityButton = screen.getByText('REMOVE ACTIVITY')
+
+    userEvent.click(deleteSavedActivityButton)
+
+    expect(mockDeleteSavedActivity).toHaveBeenCalled()
+  });
+
+  it('should call deleteSavedActivity function with the activity id', () =>  {  
+    const deleteSavedActivityButton = screen.getByText('REMOVE ACTIVITY')
+
+    userEvent.click(deleteSavedActivityButton)
+
+    expect(mockDeleteSavedActivity).toHaveBeenCalledWith('0')
   });
 });
