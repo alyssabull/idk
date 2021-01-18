@@ -1,6 +1,7 @@
-import './Dropdown.scss'
+import PropTypes from 'prop-types';
+import './Dropdown.scss';
 
-const DropdownFilter = ({ dropdownValues, filterSearchResults, dropdownType}) => {
+const Dropdown = ({ dropdownValues, filterSearchResults, dropdownType}) => {
 
   const generateDropdown = () => {
     return dropdownValues.map(value => {
@@ -30,4 +31,10 @@ const DropdownFilter = ({ dropdownValues, filterSearchResults, dropdownType}) =>
   )
 }
 
-export default DropdownFilter;
+export default Dropdown;
+
+Dropdown.propTypes = {
+  dropdownValues: PropTypes.array,
+  filterSearchResults: PropTypes.func,
+  dropdownType: PropTypes.string
+};
