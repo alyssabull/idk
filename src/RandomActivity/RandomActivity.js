@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import './RandomActivity.scss'
 
-const RandomActivity = ({ randomActivity, generateNewActivity, updateSavedActivities}) => {
+const RandomActivity = ({ randomActivity, savedActivities, generateNewActivity, updateSavedActivities}) => {
   const toggleActivity = (activity) => {
     if (activity.isSaved === false) {
       activity.isSaved = true
@@ -43,3 +44,10 @@ const RandomActivity = ({ randomActivity, generateNewActivity, updateSavedActivi
 }
 
 export default RandomActivity;
+
+RandomActivity.propTypes = {
+  randomActivity: PropTypes.object,
+  savedActivities: PropTypes.array,
+  generateNewActivity: PropTypes.func,
+  updateSavedActivities: PropTypes.func
+}

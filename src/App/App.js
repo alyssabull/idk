@@ -171,6 +171,7 @@ function App() {
         exact path='/random-activity'>
           <RandomActivity 
             randomActivity={randomActivity}
+            savedActivities={savedActivities}
             generateNewActivity={generateNewActivity}
             updateSavedActivities={updateSavedActivities}
           />
