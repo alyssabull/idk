@@ -1,4 +1,5 @@
 import ActivityCard from '../ActivityCard/ActivityCard.js';
+import PropTypes from 'prop-types';
 import './SavedActivities.scss'
 
 const SavedActivities = ({savedActivities, deleteSavedActivity }) => {
@@ -31,3 +32,9 @@ const SavedActivities = ({savedActivities, deleteSavedActivity }) => {
 }
 
 export default SavedActivities;
+
+SavedActivities.propTypes = {
+  savedActivities: PropTypes.array,
+  deleteSavedActivity: PropTypes.func
+}
+
