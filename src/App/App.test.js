@@ -1,4 +1,4 @@
-import { render, screen} from '@testing-library/react';
+import { act, render, screen} from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App.js';
 import userEvent from '@testing-library/user-event';
@@ -44,7 +44,7 @@ describe('Saved Activities', () => {
   //   expect(localStorage.getItem).toHaveBeenCalled()
   // });
 
-  it('should display a random activity on button click', () =>  {  
+  it('should navigate away from the home screen on button click', () =>  {  
     const randomActivityButton = screen.getByText('Random Activity')
     
     userEvent.click(randomActivityButton)
@@ -63,6 +63,21 @@ describe('Saved Activities', () => {
 
     // getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
 
+    // const activityName = await waitFor(() => screen.getByText('Catch up with a friend'))
+  });
+
+  it('should be able to get and display random activities on button click', async () =>  {  
+    const randomActivityButton = screen.getByText('Random Activity')
+    
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+    
     // const activityName = await waitFor(() => screen.getByText('Catch up with a friend'))
   });
 });

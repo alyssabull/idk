@@ -91,15 +91,15 @@ function App() {
   }
 
   const formatAPIData = (data) => {
-      const cleanedData = {
-        activity: data.activity,
-        key: data.key,
-        link: data.link,
-        participants: data.participants,
-        type: data.type,
-        isSaved: false
-      }
-      setRandomActivity(cleanedData)
+    const cleanedData = {
+      activity: data.activity,
+      key: data.key,
+      link: data.link,
+      participants: data.participants,
+      type: data.type,
+      isSaved: false
+    }
+    setRandomActivity(cleanedData)
   }
 
   const updateSavedActivities = (activities, updateType) => {
