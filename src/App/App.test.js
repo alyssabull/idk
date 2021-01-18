@@ -26,7 +26,7 @@ describe('Saved Activities', () => {
   })
 
   it('should render correctly', () =>  {  
-  const title = screen.getByText('IDK');
+    const title = screen.getByText('IDK');
     const tagline = screen.getByText('Not sure what to today? Click below for some fun ideas!')
     const activityTypeDropdown = screen.getByTestId('Cooking')
     const participantNumDropdown = screen.getByText(2)
@@ -40,7 +40,7 @@ describe('Saved Activities', () => {
   });
 
   it('should navigate away from the home screen on button click', () =>  {  
-  const randomActivityButton = screen.getByText('Random Activity')
+    const randomActivityButton = screen.getByText('Random Activity')
     userEvent.click(randomActivityButton)
     
     expect(screen.queryByText('Not sure what to today? Click below for some fun ideas!')).not.toBeInTheDocument()
@@ -57,7 +57,7 @@ describe('Saved Activities', () => {
   });
 
   it('should be able to get and display random activities on button click', async () =>  {  
-  const randomActivityButton = screen.getByText('Random Activity')
+    const randomActivityButton = screen.getByText('Random Activity')
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -78,7 +78,7 @@ describe('Saved Activities', () => {
   });
 
   it('should save current activity to storage on button click', async () =>  {  
-  const randomActivityButton = screen.getByText('Random Activity')
+    const randomActivityButton = screen.getByText('Random Activity')
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -92,7 +92,7 @@ describe('Saved Activities', () => {
   });
 
   it('should be able to toggle save or remove saved current activity on button click', async () => {
-  const randomActivityButton = screen.getByText('Random Activity')
+    const randomActivityButton = screen.getByText('Random Activity')
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -113,7 +113,7 @@ describe('Saved Activities', () => {
   })
 
   it('should be able to save, view saved activities then remove saved activities', async () => {
-  const randomActivityButton = screen.getByText('Random Activity')
+    const randomActivityButton = screen.getByText('Random Activity')
     userEvent.click(randomActivityButton)
 
     const newRandomActivityButton = screen.getByText('Show New Activity')
@@ -146,5 +146,47 @@ describe('Saved Activities', () => {
 
     const noActivitesMessage = screen.getByText('No saved activites yet! Your saved activities will be shown here.')
     expect(noActivitesMessage).toBeInTheDocument()
+  })
+
+  it('should be able to switch between page views', async () => {
+    const randomActivityButton = screen.getByText('Random Activity')
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const activityName = screen.getByText('Catch up with a friend')
+    const activityType = screen.getByText('social')
+    const saveActivityButton = screen.getByText('+ Save Activity')
+
+    expect(activityName).toBeInTheDocument()
+    expect(activityType).toBeInTheDocument()
+    expect(saveActivityButton).toBeInTheDocument()
+    expect(newRandomActivityButton).toBeInTheDocument()
+
+    const savedActivityButton = screen.getByText('Saved Activities')
+    userEvent.click(savedActivityButton)
+
+    const noActivitesMessage = screen.getByText('No saved activites yet! Your saved activities will be shown here.')
+    expect(noActivitesMessage).toBeInTheDocument()
+
+    const homeButton = screen.getByText('Home')
+    userEvent.click(homeButton)
+
+    const title = screen.getByText('IDK');
+    const tagline = screen.getByText('Not sure what to today? Click below for some fun ideas!')
+    const activityTypeDropdown = screen.getByTestId('Cooking')
+    const participantNumDropdown = screen.getByText(2)
+    const getActivityButton = screen.getByTestId('question-button')
+
+    expect(title).toBeInTheDocument();
+    expect(tagline).toBeInTheDocument();
+    expect(activityTypeDropdown).toBeInTheDocument()
+    expect(participantNumDropdown).toBeInTheDocument()
+    expect(getActivityButton).toBeInTheDocument();
   })
 });
