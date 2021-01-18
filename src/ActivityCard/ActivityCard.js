@@ -36,7 +36,7 @@ const ActivityCard = (props) => {
         <p className='detail'>{determineIcon()} &nbsp; {props.type}</p>
         <p className='detail'><BsPeopleFill size={20}/> &nbsp; {props.participants}</p>
       </section>
-      <button onClick={() => props.deleteSavedActivity(props.id)} className='remove-button'>REMOVE ACTIVITY</button>
+      <button data-testid={props.id} onClick={() => props.deleteSavedActivity(props.id)} className='remove-button'>REMOVE ACTIVITY</button>
     </section>
   )
 }

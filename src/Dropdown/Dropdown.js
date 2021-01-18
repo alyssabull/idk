@@ -7,6 +7,7 @@ const DropdownFilter = (props) => {
       return(
         <option
           id={value.type}
+          data-testid={value.name}
           key={value.id}
           value={`${value.name}`}>
             {value.name}
@@ -22,6 +23,7 @@ const DropdownFilter = (props) => {
   return(
     <select
       id='dropdown'
+      data-testid = 'dropdown'
       onChange={handleDropdownChange}>
         {generateDropdown()}
     </select>

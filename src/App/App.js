@@ -6,7 +6,7 @@ import { activityTypeDropdown, participantNumDropdown } from '../dropdownData.js
 import NavBar from '../NavBar/NavBar.js';
 import RandomActivity from '../RandomActivity/RandomActivity.js';
 import SavedActivities from '../SavedActivities/SavedActivities.js';
-import DropdownFilter from '../Dropdown/Dropdown.js';
+import Dropdown from '../Dropdown/Dropdown.js';
 import './App.scss';
 
 function App() {
@@ -33,8 +33,6 @@ function App() {
 
   useEffect(() => {
     saveCurrentActivitiy()
-    setActivitySearchType('any')
-    setParticipantSearchNum('any')
   }, [randomActivity])
 
   const getSavedActivitiesFromStorage = () => {
@@ -47,6 +45,19 @@ function App() {
     let storedCurrentActivity = localStorage.getItem('storedCurrentActivity')
     let parsedCurrentActivity = JSON.parse(storedCurrentActivity)
     setRandomActivity(parsedCurrentActivity)
+  }
+
+  const saveToStorage = () => {
+    localStorage.clear()
+    let stringifiedActivities = JSON.stringify(savedActivities)
+    localStorage.setItem('storedActivities', stringifiedActivities)
+  }
+
+  const saveCurrentActivitiy = () => {
+    localStorage.clear()
+    saveToStorage()
+    let stringifiedCurrentActivity = JSON.stringify(randomActivity)
+    localStorage.setItem('storedCurrentActivity', stringifiedCurrentActivity)
   }
 
   const generateNewActivity = () => {
@@ -80,15 +91,15 @@ function App() {
   }
 
   const formatAPIData = (data) => {
-      const cleanedData = {
-        activity: data.activity,
-        key: data.key,
-        link: data.link,
-        participants: data.participants,
-        type: data.type,
-        isSaved: false
-      }
-      setRandomActivity(cleanedData)
+    const cleanedData = {
+      activity: data.activity,
+      key: data.key,
+      link: data.link,
+      participants: data.participants,
+      type: data.type,
+      isSaved: false
+    }
+    setRandomActivity(cleanedData)
   }
 
   const updateSavedActivities = (activities, updateType) => {
@@ -105,20 +116,7 @@ function App() {
     })
 
     setSavedActivities(filteredActivities)
-    generateNewActivity()
-  }
-
-  const saveToStorage = () => {
-    localStorage.clear()
-    let stringifiedActivities = JSON.stringify(savedActivities)
-    localStorage.setItem('storedActivities', stringifiedActivities)
-  }
-
-  const saveCurrentActivitiy = () => {
-    localStorage.clear()
-    saveToStorage()
-    let stringifiedCurrentActivity = JSON.stringify(randomActivity)
-    localStorage.setItem('storedCurrentActivity', stringifiedCurrentActivity)
+    generateNewActivity(activitySearchType, participantSearchNum)
   }
 
   const filterSearchResults = (dropdownInput, dropdownType) => {
@@ -147,14 +145,14 @@ function App() {
       <Route exact path={['/', '/random-activity']}>
         <section className='filter-activities'>
           <p>Show me</p>
-          <DropdownFilter 
+          <Dropdown 
             dropdownValues={activityTypeDropdown}
             filterSearchResults={filterSearchResults}
             filterType={activitySearchType}
             dropdownType='activity'
           />
           <p>activity with</p>
-          <DropdownFilter 
+          <Dropdown
             dropdownValues={participantNumDropdown}
             filterSearchResults={filterSearchResults}
             filterType={participantSearchNum}
@@ -167,7 +165,7 @@ function App() {
         exact path='/'>
       <Link to='random-activity' className='find-activity'>
         <button onClick={generateNewActivity} className='find-activity-button'>
-          <FaQuestion size={72}/>
+          <FaQuestion size={72} data-testid='question-button' />
         </button>
       </Link>
       </Route>
