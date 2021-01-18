@@ -60,10 +60,6 @@ describe('Saved Activities', () => {
     expect(activityParticipantNum).toBeInTheDocument()
     expect(saveActivityButton).toBeInTheDocument()
     expect(newRandomActivityButton).toBeInTheDocument()
-
-    // getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
-
-    // const activityName = await waitFor(() => screen.getByText('Catch up with a friend'))
   });
 
   it('should be able to get and display random activities on button click', async () =>  {  
@@ -77,7 +73,29 @@ describe('Saved Activities', () => {
       getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
       userEvent.click(newRandomActivityButton)
     })
+
+    const activityName = screen.getByText('Catch up with a friend')
+    const activityType = screen.getByText('social')
+    const saveActivityButton = screen.getByText('+ Save Activity')
+
+    expect(activityName).toBeInTheDocument()
+    expect(activityType).toBeInTheDocument()
+    expect(saveActivityButton).toBeInTheDocument()
+    expect(newRandomActivityButton).toBeInTheDocument()
+  });
+
+  it('should save current activity to storage on button click', async () =>  {  
+    const randomActivityButton = screen.getByText('Random Activity')
     
-    // const activityName = await waitFor(() => screen.getByText('Catch up with a friend'))
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    expect(localStorage.setItem).toHaveBeenCalled()
   });
 });
