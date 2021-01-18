@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import ActivityCard from './ActivityCard.js';
-import { sampleRandomActivity, sampleSavedActivities } from '../sampleTestData.js';
+import { sampleRandomActivity } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 
 describe('Saved Activities', () => {
@@ -50,4 +50,5 @@ describe('Saved Activities', () => {
 
     expect(mockDeleteSavedActivity).toHaveBeenCalledWith('0')
   });
+
 });
