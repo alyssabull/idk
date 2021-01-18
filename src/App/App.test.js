@@ -99,7 +99,7 @@ describe('Saved Activities', () => {
     expect(localStorage.setItem).toHaveBeenCalled()
   });
 
-  it('should save current activity on button click', async () => {
+  it('should be able to toggle save or remove saved current activity on button click', async () => {
     const randomActivityButton = screen.getByText('Random Activity')
     
     userEvent.click(randomActivityButton)
@@ -118,5 +118,49 @@ describe('Saved Activities', () => {
     const removeActivityButton = screen.getByText('- Remove Activity')
 
     expect(removeActivityButton).toBeInTheDocument()
+
+    userEvent.click(removeActivityButton)
+
+    expect(saveActivityButton).toBeInTheDocument()
+  })
+
+  it('should be able to save, view saved activities then remove saved activities', async () => {
+    const randomActivityButton = screen.getByText('Random Activity')
+    
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const saveActivityButton = screen.getByText('+ Save Activity')
+
+    userEvent.click(saveActivityButton)
+
+    const savedActivityButton = screen.getByText('Saved Activities')
+    
+    userEvent.click(savedActivityButton)
+
+    const savedActivityTitle = screen.getByText('Catch up with a friend')
+    const savedActivityType = screen.getByText('social')
+    const savedActivityParticipants = screen.getByText(2)
+    const removeSavedActivityButton = screen.getByText('REMOVE ACTIVITY')
+
+    expect(savedActivityTitle).toBeInTheDocument()
+    expect(savedActivityType).toBeInTheDocument()
+    expect(savedActivityParticipants).toBeInTheDocument()
+    expect(removeSavedActivityButton).toBeInTheDocument()
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(removeSavedActivityButton)
+    })
+
+    const noActivitesMessage = screen.getByText('No saved activites yet! Your saved activities will be shown here.')
+
+    expect(noActivitesMessage).toBeInTheDocument()
   })
 });
