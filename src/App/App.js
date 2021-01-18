@@ -165,7 +165,7 @@ function App() {
         exact path='/'>
       <Link to='random-activity' className='find-activity'>
         <button onClick={generateNewActivity} className='find-activity-button'>
-          <FaQuestion size={72}/>
+          <FaQuestion size={72} data-testid='question-button' />
         </button>
       </Link>
       </Route>
