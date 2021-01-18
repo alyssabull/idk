@@ -148,11 +148,13 @@ function App() {
           <Dropdown 
             dropdownValues={activityTypeDropdown}
             filterSearchResults={filterSearchResults}
+            dropdownType='activity'
           />
           <p>activity with</p>
           <Dropdown
             dropdownValues={participantNumDropdown}
             filterSearchResults={filterSearchResults}
+            dropdownType='participants'
           />
           <p>participants</p>
         </section>
@@ -160,7 +162,7 @@ function App() {
       <Route 
         exact path='/'>
       <Link to='random-activity' className='find-activity'>
-        <button onClick={generateNewActivity} className='find-activity-button'>
+        <button onClick={generateNewActivity} aria-label='random-activity-button' className='find-activity-button'>
           <FaQuestion size={72} data-testid='question-button' />
         </button>
       </Link>

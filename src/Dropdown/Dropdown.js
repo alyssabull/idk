@@ -1,17 +1,17 @@
 import './Dropdown.scss'
 
-const DropdownFilter = ({ dropdownValues, filterSearchResults}) => {
+const DropdownFilter = ({ dropdownValues, filterSearchResults, dropdownType}) => {
 
   const generateDropdown = () => {
     return dropdownValues.map(value => {
       return(
-        <option
-          id={value.type}
-          data-testid={value.name}
-          key={value.id}
-          value={`${value.name}`}>
-            {value.name}
-        </option>
+          <option
+            id={value.id}
+            data-testid={value.name}
+            key={value.id}
+            value={`${value.name}`}>
+              <label for={value.id}>{value.name}</label>
+          </option>
       )
     })
   }
@@ -22,10 +22,10 @@ const DropdownFilter = ({ dropdownValues, filterSearchResults}) => {
 
   return(
     <select
-      id='dropdown'
+      id={`${dropdownType} dropdown`}
       data-testid = 'dropdown'
       onChange={handleDropdownChange}>
-        {generateDropdown()}
+        <label for={`${dropdownType} dropdown`}>{generateDropdown()}</label>
     </select>
   )
 }

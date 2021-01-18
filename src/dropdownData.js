@@ -12,8 +12,8 @@ export const activityTypeDropdown = [
 ]
 
 export const participantNumDropdown = [
-  {id: 0, name: 'Any', type: 'participants'},
-  {id: 1, name: '1', type: 'participants'},
-  {id: 2, name: '2', type: 'participants'},
-  {id: 3, name: '3', type: 'participants'}
+  {id: 10, name: 'Any', type: 'participants'},
+  {id: 11, name: '1', type: 'participants'},
+  {id: 12, name: '2', type: 'participants'},
+  {id: 13, name: '3', type: 'participants'}
 ] 
