@@ -148,15 +148,11 @@ function App() {
           <Dropdown 
             dropdownValues={activityTypeDropdown}
             filterSearchResults={filterSearchResults}
-            filterType={activitySearchType}
-            dropdownType='activity'
           />
           <p>activity with</p>
           <Dropdown
             dropdownValues={participantNumDropdown}
             filterSearchResults={filterSearchResults}
-            filterType={participantSearchNum}
-            dropdownType='participants'
           />
           <p>participants</p>
         </section>

@@ -1,9 +1,9 @@
 import './Dropdown.scss'
 
-const DropdownFilter = (props) => {
+const DropdownFilter = ({ dropdownValues, filterSearchResults}) => {
 
   const generateDropdown = () => {
-    return props.dropdownValues.map(value => {
+    return dropdownValues.map(value => {
       return(
         <option
           id={value.type}
@@ -17,7 +17,7 @@ const DropdownFilter = (props) => {
   }
 
   const handleDropdownChange = (event) => {
-    props.filterSearchResults(event.target.value.toLowerCase(), event.target[0].id)
+    filterSearchResults(event.target.value.toLowerCase(), event.target[0].id)
   }
 
   return(
