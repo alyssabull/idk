@@ -7,7 +7,7 @@ const Dropdown = ({ dropdownValues, filterSearchResults, dropdownType}) => {
     return dropdownValues.map(value => {
       return(
           <option
-            id={value.id}
+            id={value.type}
             data-testid={value.name}
             key={value.id}
             value={`${value.name}`}>
@@ -18,6 +18,7 @@ const Dropdown = ({ dropdownValues, filterSearchResults, dropdownType}) => {
   }
 
   const handleDropdownChange = (event) => {
+    debugger
     filterSearchResults(event.target.value.toLowerCase(), event.target[0].id)
   }
 

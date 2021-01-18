@@ -120,6 +120,7 @@ function App() {
   }
 
   const filterSearchResults = (dropdownInput, dropdownType) => {
+    debugger
     if (dropdownType === 'activity') {
       setActivitySearchType(dropdownInput)
     } else {

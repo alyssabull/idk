@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import './RandomActivity.scss'
 
 const RandomActivity = ({ randomActivity, savedActivities, generateNewActivity, updateSavedActivities}) => {
-  const toggleActivity = (activity) => {
-    if (activity.isSaved === false) {
-      activity.isSaved = true
-      return updateSavedActivities(activity, 'save')
-    } else if (activity.isSaved === true) {
-      activity.isSaved = false
+  const toggleActivity = (randomActivity) => {
+    if (randomActivity.isSaved === false) {
+      randomActivity.isSaved = true
+      return updateSavedActivities(randomActivity, 'save')
+    } else if (randomActivity.isSaved === true) {
+      randomActivity.isSaved = false
       const filteredActivities = savedActivities.filter(savedActivity => {
-        return savedActivity.key !== activity.key
+        return savedActivity.key !== randomActivity.key
       })
       updateSavedActivities(filteredActivities, 'delete')
     }
