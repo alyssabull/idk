@@ -2,8 +2,8 @@ import { act, render, screen} from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App.js';
 import userEvent from '@testing-library/user-event';
-import { getRandomActivity, getFilteredActivity } from '../apiCalls/apiCalls.js';
-import { sampleRandomActivity, sampleCookingActivity } from '../sampleTestData.js';
+import { getRandomActivity, getFilteredActivity, getFilteredParticipantActivity } from '../apiCalls/apiCalls.js';
+import { sampleRandomActivity, sampleCookingActivity, sampleTwoPersonActivity } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 jest.mock('../apiCalls/apiCalls.js')
 
@@ -212,6 +212,35 @@ describe('Saved Activities', () => {
 
     const activityName = screen.getByText('Cook something together with someone')
     const activityType = screen.getByText('cooking')
+    const activityParticipants = screen.queryAllByText(2)
+    
+    expect(activityName).toBeInTheDocument()
+    expect(activityType).toBeInTheDocument()
+    expect(activityParticipants).toHaveLength(2)
+  })
+
+  it('should be able to filter activities by number of participants', async () => {
+    const randomActivityButton = screen.getByText('Random Activity')
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const dropdown = screen.getByTestId('participants dropdown')
+
+    userEvent.selectOptions(dropdown, ['2'] );
+
+    await act(async () => {
+      getFilteredParticipantActivity.mockResolvedValueOnce(sampleTwoPersonActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const activityName = screen.getByText('Play a game of tennis with a friend')
+    const activityType = screen.getByText('social')
     const activityParticipants = screen.queryAllByText(2)
     
     expect(activityName).toBeInTheDocument()
