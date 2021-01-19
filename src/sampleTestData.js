@@ -38,6 +38,15 @@ export const sampleTwoPersonActivity = {
   isSaved: false
 }
 
+export const sampleSocialTwoPersonActivity = {
+  activity: 'Compliment someone',
+  key: '13',
+  link: '',
+  participants: 2,
+  type: 'social',
+  isSaved: false
+}
+
 export const sampleSavedActivities = [{ 
   activity: 'Visit your past teachers',
   key: '4',
