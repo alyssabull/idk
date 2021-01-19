@@ -4,11 +4,6 @@ import './index.css';
 import App from './App/App.js';
 import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+const router = <BrowserRouter basename='/idk'><App /></BrowserRouter>
+
+ReactDOM.render(router, document.getElementById('root'));
