@@ -1,17 +1,16 @@
+@import '../sass/_mixins.scss';
+
 .saved-activities {
-  display: flex;
+  @include flex-align;
   flex-direction: column;
-  align-items: center;
 }
 
 .saved-title {
-  display: flex;
-  justify-content: center;
+  @include flex-justify;
   font-size: 2em;
 }
 
 .all-cards {
-  display: flex;
+  @include flex-justify;
   flex-wrap: wrap;
-  justify-content: center;
 }

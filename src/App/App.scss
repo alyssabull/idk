@@ -1,4 +1,5 @@
 @import '../sass/_mixins.scss';
+@import '../sass/_variables.scss';
 
 body {
   font-family: 'Libre Franklin', sans-serif;
@@ -22,8 +23,8 @@ a:hover {
 header {
   @include flex-align;
   justify-content: space-between;
-  background-color: #0f0f0f;
-  color: white;
+  background-color: $background-color;
+  color: $font-color;
   height: 4.5em
 }
 
@@ -64,22 +65,19 @@ select {
 
 .find-activity-button {
   @include flex-align;
+  justify-content: center;
   border-radius: 50%;
   height: 12em;
   width: 12em;
   border: solid black 0.1em;
-  background-color: black;
-  color: white;
+  background-color: $background-color;
+  color: $font-color;
   transition: all .2s ease-in-out;
   outline: none;
 }
 
 button:hover {
-  color: black;
-  background-color: white;
-  border: none;
-  transform: scale(1.1);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  @include button-hover;
 }
 
 .button-text {

@@ -31,7 +31,7 @@ const RandomActivity = ({ randomActivity, savedActivities, generateNewActivity, 
               Show New Activity
             </button>
           </section>
-          {randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' className='get-started-link' href={`${randomActivity.link}`}>HERE!</a></p>}
+          {randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' className='get-started-here'href={`${randomActivity.link}`}>HERE!</a></p>}
         </section>
       )
   }
