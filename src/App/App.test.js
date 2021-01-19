@@ -3,11 +3,11 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App.js';
 import userEvent from '@testing-library/user-event';
 import { getRandomActivity, getFilteredActivity, getFilteredParticipantActivity } from '../apiCalls/apiCalls.js';
-import { sampleRandomActivity, sampleCookingActivity, sampleTwoPersonActivity, sampleSocialTwoPersonActivity } from '../sampleTestData.js';
+import { sampleRandomActivity, sampleCookingActivity, sampleTwoPersonActivity, sampleSocialTwoPersonActivity, sampleSavedActivities } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 jest.mock('../apiCalls/apiCalls.js')
 
-describe('Saved Activities', () => {
+describe('App', () => {
   Object.defineProperty(window, 'localStorage', {
     value: {
       setItem: jest.fn(() => null),
@@ -71,6 +71,7 @@ describe('Saved Activities', () => {
     const activityType = screen.getByText('social')
     const saveActivityButton = screen.getByText('+ Save Activity')
 
+    expect(localStorage.setItem).toHaveBeenCalled()
     expect(activityName).toBeInTheDocument()
     expect(activityType).toBeInTheDocument()
     expect(saveActivityButton).toBeInTheDocument()
@@ -278,4 +279,5 @@ describe('Saved Activities', () => {
     expect(activityType).toBeInTheDocument()
     expect(activityParticipants).toHaveLength(2)
   })
+
 });
