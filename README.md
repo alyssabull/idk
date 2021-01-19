@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# IDK Solo Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+Have you ever sat at home wondering what to do? Do you want to live a more fulfilling and exciting life trying new activities? Then IDK is just for you! Find your next adventure with our large database of activities. Filter by activity type or number of people you want to enjoy the actvitiy with. Save your favorite activities so you never run out of fun ideas!
 
-In the project directory, you can run:
+- [Project Brief and Rubric](https://frontend.turing.io/projects/module-3/binary-challenge.html)
+- [Deployed Page](https://alyssabull.github.io/idk/)
+- [API](https://www.boredapi.com/)
 
-### `npm start`
+## Learning Goals
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Build a React App in 5 days showing mastery of:
+  - React Router
+  - Asynchronus JavaScript
+  - Unit and Integration testing
+ - Utilize `useState` and `useEffect` hooks to build components
+ - Find an external API and design a concept to build an application
+ - Utilize the chosen API to make get requests for users to interact and view the data
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Functionality
 
-### `npm test`
+- Home Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Random Activity View
 
-### `npm run build`
+- Filtered View
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Saved Activities
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
 
-### `npm run eject`
+- React
+- Javascript
+- JSX
+- Sass
+- Jest
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Challenges
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Choosing an API that could be easily used to build an interesting application in a short period of time
+- Mocking asynchronous functions when testing with Jest
+- Mocking `localStorage` to ensure functionality of `getItem`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Wins
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Implementing `localStorage` to persist currentActivity and savedActivities on page refresh
+- Incorporating filters that allow the user to search activities by type and number of participants
+- Adding saving and removing functionality to saved activities
+- Opening up links (when applicable) in a new tab
+- Incorporating multiple mixins and variables with sass
 
-## Learn More
+## Set Up Instructions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork [this repository](https://github.com/alyssabull/idk) and clone it down to your local machine.
+2. Move into that directory: `cd idk`.
+3. Run `npm start` to run the app!
+4. To see the code itself run `(your text editor) . `
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributors
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* [Alyssa Bull](https://github.com/alyssabull)
