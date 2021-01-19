@@ -21,13 +21,13 @@ Have you ever sat at home wondering what to do? Do you want to live a more fulfi
 ## Functionality
 
 - Home Page
+<img width="1299" alt="Screen Shot 2021-01-18 at 8 25 03 PM" src="https://user-images.githubusercontent.com/58453566/104984432-e6c78280-59cb-11eb-805f-a555ecf616e8.png">
 
 - Random Activity View
-
-- Filtered View
+<img width="1298" alt="Screen Shot 2021-01-18 at 8 25 41 PM" src="https://user-images.githubusercontent.com/58453566/104984465-f941bc00-59cb-11eb-8ef0-189b977d21e0.png">
 
 - Saved Activities
-
+<img width="1299" alt="Screen Shot 2021-01-18 at 8 26 24 PM" src="https://user-images.githubusercontent.com/58453566/104984533-1b3b3e80-59cc-11eb-8c64-3eba7dc6ace5.png">
 
 ## Technologies Used
 
