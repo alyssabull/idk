@@ -5,7 +5,7 @@
 Have you ever sat at home wondering what to do? Do you want to live a more fulfilling and exciting life trying new activities? Then IDK is just for you! Find your next adventure with our large database of activities. Filter by activity type or number of people you want to enjoy the actvitiy with. Save your favorite activities so you never run out of fun ideas!
 
 - [Project Brief and Rubric](https://frontend.turing.io/projects/module-3/binary-challenge.html)
-- [Deployed Page](https://alyssabull.github.io/idk/)
+- [Deployed Page](https://alyssabull.github.io/idk/) - in process of building!
 - [API](https://www.boredapi.com/)
 
 ## Learning Goals
