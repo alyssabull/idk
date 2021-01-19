@@ -1,3 +1,5 @@
+@import '../sass/_mixins.scss';
+
 body {
   font-family: 'Libre Franklin', sans-serif;
 }
@@ -7,8 +9,7 @@ button:hover {
 }
 
 a {
-  display: flex;
-  align-items: center;
+  @include flex-align;
   text-decoration: none;
   font-weight: bold;
   color: white;
@@ -19,12 +20,11 @@ a:hover {
 }
 
 header {
-  display: flex;
+  @include flex-align;
   justify-content: space-between;
-  align-items: center;
   background-color: #0f0f0f;
   color: white;
-  height: 6.1em
+  height: 4.5em
 }
 
 .website-title {
@@ -35,25 +35,22 @@ header {
 }
 
 .home-title {
-  display: flex;
-  justify-content: center;
+  @include flex-justify;
   font-size: 15em;
   font-weight: lighter;
   margin: 0;
 }
 
 .tagline {
-  display: flex;
-  justify-content: center;
+  @include flex-justify;
   margin: 0;
   font-size: 1.2em;
 }
 
 .filter-activities {
-  display: flex;
+  @include flex-align;
   justify-content: space-around;
-  align-items: center;
-  margin: 5% 20%;
+  margin: 3.5% 20%;
 }
 
 select {
@@ -62,12 +59,11 @@ select {
 }
 
 .find-activity {
-  display: flex;
-  justify-content: center;
+  @include flex-justify;
 }
 
 .find-activity-button {
-  align-items: center;
+  @include flex-align;
   border-radius: 50%;
   height: 12em;
   width: 12em;
