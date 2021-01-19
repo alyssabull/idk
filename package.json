@@ -2,7 +2,7 @@
   "name": "idk",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/alyssabull/idk",
+  "homepage": "https://alyssabull.github.io/idk",
   "dependencies": {
     "@testing-library/user-event": "^12.6.0",
     "node-sass": "^4.14.1",

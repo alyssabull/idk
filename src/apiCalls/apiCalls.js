@@ -1,5 +1,5 @@
 export const getRandomActivity = () => {
-  return fetch('http://www.boredapi.com/api/activity/')
+  return fetch('https://www.boredapi.com/api/activity/')
   .then(response => {
     if (!response.ok) {
       throw Error('Failed to fetch activity.')
@@ -9,7 +9,7 @@ export const getRandomActivity = () => {
 }
 
 export const getFilteredActivity = (type) => {
-  return fetch(`http://www.boredapi.com/api/activity?type=${type}`)
+  return fetch(`https://www.boredapi.com/api/activity?type=${type}`)
   .then(response => {
     if (!response.ok) {
       throw Error(`Failed to fetch ${type} activity.`)
@@ -19,7 +19,7 @@ export const getFilteredActivity = (type) => {
 }
 
 export const getFilteredParticipantActivity = (num) => {
-  return fetch(`http://www.boredapi.com/api/activity?participants=${num}`)
+  return fetch(`https://www.boredapi.com/api/activity?participants=${num}`)
   .then(response => {
     if (!response.ok) {
       throw Error(`Failed to fetch activity with ${num} participants.`)
