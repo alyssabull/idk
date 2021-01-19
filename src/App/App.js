@@ -113,7 +113,6 @@ function App() {
     const filteredActivities = savedActivities.filter(savedActivity => {
       return savedActivity.key !== activityKey
     })
-
     setSavedActivities(filteredActivities)
     generateNewActivity(activitySearchType, participantSearchNum)
   }
@@ -132,7 +131,7 @@ function App() {
         <Route exact path={['/random-activity', '/saved-activities']}>
           <h1 className='website-title'>IDK</h1>
         </Route>
-        <h1></h1>
+        <h1> </h1>
         <nav>
           <NavBar />
         </nav>

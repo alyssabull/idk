@@ -22,8 +22,8 @@ export const participantNumDropdown = [
 
 activityTypeDropdown.PropTypes = {
   activityTypeDropdown: PropTypes.array
-}
+};
 
 participantNumDropdown.PropTypes = {
   participantNumDropdown: PropTypes.array
-}
+};
