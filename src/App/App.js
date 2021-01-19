@@ -10,7 +10,6 @@ import Dropdown from '../Dropdown/Dropdown.js';
 import './App.scss';
 
 function App() {
-
   const [randomActivity, setRandomActivity] = useState({})
   const [savedActivities, setSavedActivities] = useState([])
   const [activitySearchType, setActivitySearchType] = useState('any')
@@ -87,7 +86,7 @@ function App() {
       getFilteredActivity(activitySearchType)
       .then(data => filterActivityParticipants(data))
       .catch(error => console.error)
-    }
+    } 
   }
 
   const formatAPIData = (data) => {
@@ -114,7 +113,6 @@ function App() {
     const filteredActivities = savedActivities.filter(savedActivity => {
       return savedActivity.key !== activityKey
     })
-
     setSavedActivities(filteredActivities)
     generateNewActivity(activitySearchType, participantSearchNum)
   }
@@ -133,7 +131,7 @@ function App() {
         <Route exact path={['/random-activity', '/saved-activities']}>
           <h1 className='website-title'>IDK</h1>
         </Route>
-        <h1></h1>
+        <h1> </h1>
         <nav>
           <NavBar />
         </nav>
@@ -148,14 +146,12 @@ function App() {
           <Dropdown 
             dropdownValues={activityTypeDropdown}
             filterSearchResults={filterSearchResults}
-            filterType={activitySearchType}
             dropdownType='activity'
           />
           <p>activity with</p>
           <Dropdown
             dropdownValues={participantNumDropdown}
             filterSearchResults={filterSearchResults}
-            filterType={participantSearchNum}
             dropdownType='participants'
           />
           <p>participants</p>
@@ -164,7 +160,7 @@ function App() {
       <Route 
         exact path='/'>
       <Link to='random-activity' className='find-activity'>
-        <button onClick={generateNewActivity} className='find-activity-button'>
+        <button onClick={generateNewActivity} aria-label='random-activity-button' className='find-activity-button'>
           <FaQuestion size={72} data-testid='question-button' />
         </button>
       </Link>
@@ -173,8 +169,8 @@ function App() {
         exact path='/random-activity'>
           <RandomActivity 
             randomActivity={randomActivity}
-            generateNewActivity={generateNewActivity}
             savedActivities={savedActivities}
+            generateNewActivity={generateNewActivity}
             updateSavedActivities={updateSavedActivities}
           />
       </Route>

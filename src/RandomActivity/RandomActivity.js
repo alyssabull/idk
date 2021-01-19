@@ -1,38 +1,39 @@
+import PropTypes from 'prop-types';
 import './RandomActivity.scss'
 
-const RandomActivity = (props) => {
-  const toggleActivity = (activity) => {
-    if (activity.isSaved === false) {
-      activity.isSaved = true
-      return props.updateSavedActivities(activity, 'save')
-    } else if (activity.isSaved === true) {
-      activity.isSaved = false
-      const filteredActivities = props.savedActivities.filter(savedActivity => {
-        return savedActivity.key !== activity.key
+const RandomActivity = ({ randomActivity, savedActivities, generateNewActivity, updateSavedActivities}) => {
+  const toggleActivity = (randomActivity) => {
+    if (randomActivity.isSaved === false) {
+      randomActivity.isSaved = true
+      return updateSavedActivities(randomActivity, 'save')
+    } else if (randomActivity.isSaved === true) {
+      randomActivity.isSaved = false
+      const filteredActivities = savedActivities.filter(savedActivity => {
+        return savedActivity.key !== randomActivity.key
       })
-      props.updateSavedActivities(filteredActivities, 'delete')
+      updateSavedActivities(filteredActivities, 'delete')
     }
   }
 
   const generateActivityCard = () => {
-      return(
-        <section className='activity-card'>
-          <h1 className='activity-title'>{props.randomActivity.activity}</h1>
-          <section className='activity-details'>
-            <p className='activity-type'><b>Activity Type:</b> &nbsp;{props.randomActivity.type}</p>
-            <p className='activity-participants'><b>Number of Participants:</b> &nbsp; {props.randomActivity.participants}</p>
-          </section>
-          <section>
-            <button onClick={() => toggleActivity(props.randomActivity, props.savedActivites, props.updateSavedActivities)} className='buttons'>
-              {props.randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}
-            </button>
-            <button onClick={props.generateNewActivity} className='buttons'>
-              Show New Activity
-            </button>
-          </section>
-          {props.randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' className='get-started-link' href={`${props.randomActivity.link}`}>HERE!</a></p>}
+    return(
+      <section className='activity-card'>
+        <h1 className='activity-title'>{randomActivity.activity}</h1>
+        <section className='activity-details'>
+          <p className='activity-type'><b>Activity Type:</b> &nbsp;{randomActivity.type}</p>
+          <p className='activity-participants'><b>Number of Participants:</b> &nbsp; {randomActivity.participants}</p>
         </section>
-      )
+        <section className='button-container'>
+          <button onClick={() => toggleActivity(randomActivity)} className='buttons'>
+            {randomActivity.isSaved ? '- Remove Activity' : '+ Save Activity'}
+          </button>
+          <button onClick={generateNewActivity} className='buttons'>
+            Show New Activity
+          </button>
+        </section>
+        {randomActivity.link !== '' && <p className='get-started-link'>Want to get started? Click <a target='_blank' rel="noreferrer" className='get-started-here'href={`${randomActivity.link}`}>HERE!</a></p>}
+      </section>
+    )
   }
 
   return(
@@ -43,3 +44,10 @@ const RandomActivity = (props) => {
 }
 
 export default RandomActivity;
+
+RandomActivity.propTypes = {
+  randomActivity: PropTypes.object,
+  savedActivities: PropTypes.array,
+  generateNewActivity: PropTypes.func,
+  updateSavedActivities: PropTypes.func
+};

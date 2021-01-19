@@ -1,9 +1,9 @@
-import './Dropdown.scss'
+import PropTypes from 'prop-types';
 
-const DropdownFilter = (props) => {
+const Dropdown = ({ dropdownValues, filterSearchResults, dropdownType}) => {
 
   const generateDropdown = () => {
-    return props.dropdownValues.map(value => {
+    return dropdownValues.map(value => {
       return(
         <option
           id={value.type}
@@ -17,17 +17,23 @@ const DropdownFilter = (props) => {
   }
 
   const handleDropdownChange = (event) => {
-    props.filterSearchResults(event.target.value.toLowerCase(), event.target[0].id)
+    filterSearchResults(event.target.value.toLowerCase(), event.target[0].id)
   }
 
   return(
     <select
-      id='dropdown'
-      data-testid = 'dropdown'
+      id={`${dropdownType} dropdown`}
+      data-testid ={`${dropdownType} dropdown`}
       onChange={handleDropdownChange}>
         {generateDropdown()}
     </select>
   )
 }
 
-export default DropdownFilter;
+export default Dropdown;
+
+Dropdown.propTypes = {
+  dropdownValues: PropTypes.array,
+  filterSearchResults: PropTypes.func,
+  dropdownType: PropTypes.string
+};

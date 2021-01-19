@@ -29,6 +29,6 @@ describe('Saved Activities', () => {
     expect(pageTitle).toBeInTheDocument();
     expect(savedActivityName).toBeInTheDocument();
     expect(savedActivityType).toBeInTheDocument();
-    expect(savedActivityParticipants).toHaveLength(3);
+    expect(savedActivityParticipants).toHaveLength(8);
   });
 });

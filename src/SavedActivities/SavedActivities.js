@@ -1,16 +1,17 @@
 import ActivityCard from '../ActivityCard/ActivityCard.js';
-import './SavedActivities.scss'
+import PropTypes from 'prop-types';
+import './SavedActivities.scss';
 
-const SavedActivities = (props) => {
+const SavedActivities = ({savedActivities, deleteSavedActivity }) => {
   const generateActivityCards = () => {
-    return props.savedActivities.map(activity => {
+    return savedActivities.map(activity => {
       return(
         <section key={activity.key}>
           <ActivityCard 
             activity={activity.activity}
             type={activity.type}
             participants={activity.participants}
-            deleteSavedActivity={props.deleteSavedActivity}
+            deleteSavedActivity={deleteSavedActivity}
             id={activity.key}
             key={activity.key}
           />
@@ -23,11 +24,17 @@ const SavedActivities = (props) => {
     <section className='saved-activities'>
       <h1 className='saved-title'>Saved Activities</h1>
       <section className='all-cards'>
-        {props.savedActivities.length > 0 && generateActivityCards() }
-        {props.savedActivities.length === 0 && <p>No saved activites yet! Your saved activities will be shown here.</p>}
+        {savedActivities.length > 0 && generateActivityCards() }
+        {savedActivities.length === 0 && <p>No saved activites yet! Your saved activities will be shown here.</p>}
       </section>
     </section>
   )
 }
 
 export default SavedActivities;
+
+SavedActivities.propTypes = {
+  savedActivities: PropTypes.array,
+  deleteSavedActivity: PropTypes.func
+};
+
