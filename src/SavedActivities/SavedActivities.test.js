@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import SavedActivities from './SavedActivities.js';
-import { iconSampleData } from '../sampleTestData.js';
+import { sampleSavedActivities } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 
 describe('Saved Activities', () => {
@@ -13,7 +13,7 @@ describe('Saved Activities', () => {
     render(
       <MemoryRouter>
         <SavedActivities
-          savedActivities={iconSampleData}
+          savedActivities={sampleSavedActivities}
           deleteSavedActivities={mockDeleteSavedActivity}
         />
       </MemoryRouter>

@@ -23,7 +23,7 @@ const Dropdown = ({ dropdownValues, filterSearchResults, dropdownType}) => {
   return(
     <select
       id={`${dropdownType} dropdown`}
-      data-testid = 'dropdown'
+      data-testid ={`${dropdownType} dropdown`}
       onChange={handleDropdownChange}>
         {generateDropdown()}
     </select>

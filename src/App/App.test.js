@@ -2,8 +2,8 @@ import { act, render, screen} from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App.js';
 import userEvent from '@testing-library/user-event';
-import { getRandomActivity} from '../apiCalls/apiCalls.js';
-import { sampleRandomActivity} from '../sampleTestData.js';
+import { getRandomActivity, getFilteredActivity } from '../apiCalls/apiCalls.js';
+import { sampleRandomActivity, sampleCookingActivity } from '../sampleTestData.js';
 import '@testing-library/jest-dom';
 jest.mock('../apiCalls/apiCalls.js')
 
@@ -188,5 +188,34 @@ describe('Saved Activities', () => {
     expect(activityTypeDropdown).toBeInTheDocument()
     expect(participantNumDropdown).toBeInTheDocument()
     expect(getActivityButton).toBeInTheDocument();
+  })
+
+  it('should be able to get an activity by type', async () => {
+    const randomActivityButton = screen.getByText('Random Activity')
+    userEvent.click(randomActivityButton)
+
+    const newRandomActivityButton = screen.getByText('Show New Activity')
+
+    await act(async () => {
+      getRandomActivity.mockResolvedValueOnce(sampleRandomActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const dropdown = screen.getByTestId('activity dropdown')
+
+    userEvent.selectOptions(dropdown, ['Cooking'] );
+
+    await act(async () => {
+      getFilteredActivity.mockResolvedValueOnce(sampleCookingActivity)
+      userEvent.click(newRandomActivityButton)
+    })
+
+    const activityName = screen.getByText('Cook something together with someone')
+    const activityType = screen.getByText('cooking')
+    const activityParticipants = screen.queryAllByText(2)
+    
+    expect(activityName).toBeInTheDocument()
+    expect(activityType).toBeInTheDocument()
+    expect(activityParticipants).toHaveLength(2)
   })
 });

@@ -24,7 +24,7 @@ describe('Dropdown', () => {
   })
 
   it('should render correctly', () =>  {  
-    const dropdown = screen.getByTestId('dropdown');
+    const dropdown = screen.getByTestId('activity dropdown');
     const dropdownValue1 = screen.getByText('Busywork')
     const dropdownValue2 = screen.getByText('Cooking')
     const dropdownValue3 = screen.getByText('Education')
@@ -38,7 +38,7 @@ describe('Dropdown', () => {
   });
 
   it('should fire filterSearchResults when a selection is made', () => {
-    const dropdown = screen.getByTestId('dropdown');
+    const dropdown = screen.getByTestId('activity dropdown');
 
     userEvent.selectOptions(dropdown, ['Cooking'] );
 
@@ -46,7 +46,7 @@ describe('Dropdown', () => {
   })
 
   it('should call filterSearchResults with the target value and type', () => {
-    const dropdown = screen.getByTestId('dropdown');
+    const dropdown = screen.getByTestId('activity dropdown');
 
     userEvent.selectOptions(dropdown, ['Cooking'] );
 

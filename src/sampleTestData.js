@@ -20,30 +20,16 @@ export const sampleRandomActivity = {
   isSaved: false
 }
 
-export const sampleSavedActivities = [{ 
-  activity: 'Visit your past teachers',
-  key: '1',
+export const sampleCookingActivity = {
+  activity: 'Cook something together with someone',
+  key: '13',
   link: '',
-  participants: 1,
-  type: 'social',
-  isSaved: true
-}, {
-  activity: 'Plant a tree',
-  key: '2',
-  link: '',
-  participants: 1,
-  type: 'recreational',
-  isSaved: true
-}, {
-  activity: 'Learn Morse Code',
-  key: '3',
-  link: 'https://en.wikipedia.org/wiki/Morse_code',
-  participants: 1,
-  type: 'education',
-  isSaved: true
-}]
+  participants: 2,
+  type: 'cooking',
+  isSaved: false
+}
 
-export const iconSampleData = [{ 
+export const sampleSavedActivities = [{ 
   activity: 'Visit your past teachers',
   key: '4',
   link: '',
