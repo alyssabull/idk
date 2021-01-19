@@ -41,5 +41,69 @@ export const sampleSavedActivities = [{
   participants: 1,
   type: 'education',
   isSaved: true
-}
-]
+}]
+
+export const iconSampleData = [{ 
+  activity: 'Visit your past teachers',
+  key: '4',
+  link: '',
+  participants: 1,
+  type: 'social',
+  isSaved: true
+}, {
+  activity: 'Plant a tree',
+  key: '5',
+  link: '',
+  participants: 1,
+  type: 'recreational',
+  isSaved: true
+}, {
+  activity: 'Learn Morse Code',
+  key: '6',
+  link: 'https://en.wikipedia.org/wiki/Morse_code',
+  participants: 1,
+  type: 'education',
+  isSaved: true
+}, {
+  activity: 'Make tie dye shirts',
+  key: '7',
+  link: '',
+  participants: 1,
+  type: 'diy',
+  isSaved: true
+}, {
+  activity: 'Volunteer at your local food bank',
+  key: '8',
+  link: '',
+  participants: 1,
+  type: 'charity',
+  isSaved: true
+}, {
+  activity: 'Create a cookbook with your favorite recipes',
+  key: '9',
+  link: '',
+  participants: 1,
+  type: 'cooking',
+  isSaved: true
+}, {
+  activity: 'Go stargazing',
+  key: '10',
+  link: '',
+  participants: 1,
+  type: 'relaxation',
+  isSaved: true
+}, {
+  activity: 'Have a jam session with your friends',
+  key: '11',
+  link: '',
+  participants: 4,
+  type: 'music',
+  isSaved: true
+}, {
+  activity: 'Prepare a 72-hour kit',
+  key: '12',
+  link: 'https://www.ready.gov/kit',
+  participants: 1,
+  type: 'busywork',
+  isSaved: true
+}]

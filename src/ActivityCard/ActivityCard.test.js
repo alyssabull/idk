@@ -50,5 +50,4 @@ describe('Saved Activities', () => {
 
     expect(mockDeleteSavedActivity).toHaveBeenCalledWith('0')
   });
-
 });

@@ -9,23 +9,23 @@ import './ActivityCard.scss'
 const ActivityCard = (props) => {
   const determineIcon = () => {
     if (props.type === 'education') {
-      return <MdSchool size={20} />
+      return <MdSchool size={20} data-testid='education'/>
     } else if (props.type === 'recreational') {
-      return <FaHiking size={20} />
+      return <FaHiking size={20} data-testid='recreational'/>
     } else if (props.type === 'social') {
-      return <AiFillPhone size={20} />
+      return <AiFillPhone size={20} data-testid='social'/>
     } else if (props.type === 'diy') {
-      return <FaHammer size={20} />
+      return <FaHammer size={20} data-testid='diy'/>
     } else if (props.type === 'charity') {
-      return <BiDonateHeart size={20} />
+      return <BiDonateHeart size={20} data-testid='charity'/>
     } else if (props.type === 'cooking') {
-      return <GiCookingPot size={20} />
+      return <GiCookingPot size={20} data-testid='cooking'/>
     } else if (props.type === 'relaxation') {
-      return <FaBath size={20} />
+      return <FaBath size={20} data-testid='relaxation'/>
     } else if (props.type === 'music') {
-      return <FaMusic size={20} />
+      return <FaMusic size={20} data-testid='music'/>
     } else if (props.type === 'busywork') {
-      return <MdWork size={20} />
+      return <MdWork size={20} data-testid='busywork'/>
     }
   }
 
